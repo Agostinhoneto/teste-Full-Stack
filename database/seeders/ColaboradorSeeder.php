@@ -14,24 +14,14 @@ class ColaboradorSeeder extends Seeder
   
         public function run()
         {
-            $lojaCentro = DB::table('unidades')->where('nome_fantasia', 'Loja Centro')->first();
-            $lojaNorte = DB::table('unidades')->where('nome_fantasia', 'Loja Norte')->first();
-    
+           
             DB::table('colaboradores')->insert([
                 [
                     'id' => 1,
                     'nome' => 'João Silva',
                     'email' => 'joao@email.com',
                     'cpf' => '11122233344',
-                    'unidade_id' => $lojaCentro->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
-                    'nome' => 'Maria Oliveira',
-                    'email' => 'maria@email.com',
-                    'cpf' => '55566677788',
-                    'unidade_id' => $lojaNorte->id,
+                    'unidade_id' => 1,
                     'created_at' => now(),
                     'updated_at' => now(),
                 ],

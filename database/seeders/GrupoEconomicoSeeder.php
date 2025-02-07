@@ -10,9 +10,6 @@ class GrupoEconomicoSeeder extends Seeder
 {
     public function run()
     {
-       // $lojaCentro = DB::table('unidades')->where('nome_fantasia', 'Loja Centro')->first();
-        //$lojaNorte = DB::table('unidades')->where('nome_fantasia', 'Loja Norte')->first();
-
         DB::table('grupos_economicos')->insert([
             [
                 'id' => 1,

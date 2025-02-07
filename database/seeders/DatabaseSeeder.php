@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use BandeiraSeeder;
+use Database\Seeders\BandeiraSeeder as SeedersBandeiraSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,9 +17,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             GrupoEconomicoSeeder::class,
-           // BandeiraSeeder::class,
-            //ColaboradorSeeder::class,
-            //UnidadeSeeder::class,
+            SeedersBandeiraSeeder::class,
+            UnidadeSeeder::class,
+            ColaboradorSeeder::class,
+            
         ]);
     }
         // \App\Models\User::factory(10)->create();

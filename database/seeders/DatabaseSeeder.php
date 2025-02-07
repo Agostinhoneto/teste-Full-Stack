@@ -16,10 +16,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            BandeiraSeeder::class,
             GrupoEconomicoSeeder::class,
-            ColaboradorSeeder::class,
-            UnidadeSeeder::class,
+           // BandeiraSeeder::class,
+            //ColaboradorSeeder::class,
+            //UnidadeSeeder::class,
         ]);
     }
         // \App\Models\User::factory(10)->create();

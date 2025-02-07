@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('colaboradores', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+            $table->string('email')->unique();
+            $table->string('cpf')->unique();
+            $table->foreignId('unidade_id')->constrained('unidades')->onDelete('cascade');
             $table->timestamps();
         });
     }

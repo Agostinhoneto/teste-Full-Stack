@@ -2,20 +2,9 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\ChartController;
-use App\Http\Controllers\ContatoController;
-use App\Http\Controllers\DespesasController;
-use App\Http\Controllers\EventoFinanceirosController;
-use App\Http\Controllers\FinancasController;
-use App\Http\Controllers\LembretesPagamentoController;
-use App\Http\Controllers\ReceitasController;
 use App\Http\Controllers\RelatorioController;
 use App\Http\Controllers\UserController;
-use App\Models\Despesas;
-use App\Models\FinancialGoal;
-use App\Models\Receitas;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,7 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/users/destroy/{users}', [UserController::class, 'destroy'])->name('users.destroy');
 
   
-//relatorios
+ //relatorios
   Route::get('/relatorios/exportar/pdf', [RelatorioController::class, 'exportarPDF'])->name('relatorios.exportar.pdf');
   Route::get('/relatorios/exportar/excel', [RelatorioController::class, 'exportarExcel'])->name('relatorios.exportar.excel');
   Route::get('/relatorio', [RelatorioController::class, 'index'])->name('relatorios.index');

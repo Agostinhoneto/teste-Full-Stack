@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use BandeiraSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,10 +16,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            ColaboradorSeeder::class,
             BandeiraSeeder::class,
-            UnidadeSeeder::class,
+            GrupoEconomicoSeeder::class,
             ColaboradorSeeder::class,
+            UnidadeSeeder::class,
         ]);
     }
         // \App\Models\User::factory(10)->create();

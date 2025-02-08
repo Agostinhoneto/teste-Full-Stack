@@ -40,40 +40,27 @@
                         </button>
                     </div>
                 </form>
-
-                <!-- Tabela -->
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Id</th>
                             <th>Descrição</th>
-                            <th>Data</th>
-                            <th>Valor</th>
-                            <th>Status</th>
+                            <th>email</th>
+                            <th>Data de cadastro</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($despesas as $despesa)
+                        @foreach($colaborador as $c)
                         <tr>
-                            <td>{{ $despesa->id }}</td>
-                            <td>{{ $despesa->descricao }}</td>
-                            <td>{{ \Carbon\Carbon::parse($despesa->data_recebimento)->format('d/m/Y') }}</td>
-                            <td>R$ {{ number_format($despesa->valor, 2, ',', '.') }}</td>
-                            <td>
-                                @if($despesa->status == 1)
-                                <span class="badge bg-success">Pago</span>
-                                @else
-                                <span class="badge bg-danger">Não Pago</span>
-                                @endif
-                            </td>
+                            <td>{{ $c->id }}</td>
+                            <td>{{ $c->nome }}</td>
+                            <td>{{ $c->email }}</td>
+                            <td>{{ \Carbon\Carbon::parse($c->created_at)->format('d/m/Y') }}</td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-
-                <!-- Total -->
                 <div class="mt-3 text-end">
-                    <h5><strong>Total:</strong> R$ {{ number_format($total, 2, ',', '.') }}</h5>
                 </div>
             </div>
         </div>

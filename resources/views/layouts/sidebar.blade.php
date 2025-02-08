@@ -230,7 +230,7 @@
                   <a href="{{route('grupos-economico.index')}}" class="nav-link active">
                     <i class="nav-icon fas fa-dollar-sign"></i>
                     <p>
-                      Grupo Econômico
+                      Grupo Econômicos
                       <span class="right badge badge-danger"></span>
                     </p>
                   </a>
@@ -239,7 +239,7 @@
                   <a href="{{route('bandeiras.index')}}" class="nav-link custom-active">
                     <i class="nav-icon fas fa-money-bill-wave"></i>
                     <p>
-                      Bandeira:
+                      Bandeiras
                       <span class="right badge badge-danger"></span>
                     </p>
                   </a>
@@ -248,7 +248,7 @@
                   <a href="{{route('unidades.index')}}" class="nav-link custom-active-green">
                     <i class="fas fa-chart-line"></i>
                     <p>
-                      Unidade:
+                      Unidades
                       <span class="right badge badge-danger"></span>
                     </p>
                   </a>
@@ -257,7 +257,7 @@
                   <a href="{{route('colaboradores.index')}}" class="nav-link custom-active-lembrete">
                     <i class="nav-icon fas fa-clock"></i>
                     <p>
-                      Colaborador:
+                      Colaboradores
                       <span class="right badge badge-danger"></span>
                     </p>
                   </a>

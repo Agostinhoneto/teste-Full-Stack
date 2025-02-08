@@ -210,7 +210,7 @@
               <div class="small-box bg-info">
                 <div class="inner">
                   <h3></h3>
-                  <p>Não há receitas registradas.</p>
+                  <p>Não há registradas.</p>
                  
                 </div>
                 <div class="icon">
@@ -225,7 +225,7 @@
               <div class="small-box bg-danger">
                 <div class="inner">
                   <h3></h3>
-                  <p>Não há despesas registradas.</p>
+                  <p>Não há registradas.</p>
                   <p></p>
                 </div>
                 <div class="icon">
@@ -255,8 +255,8 @@
               <div class="small-box bg-success">
                 <div class="inner">
                   <h3><sup style="font-size: 20px">%</sup></h3>
-                  <p>Não há Finanças registradas.</p>
-                  <p>Minhas Finanças</p>
+                  <p>Não há  registradas.</p>
+                  <p></p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>

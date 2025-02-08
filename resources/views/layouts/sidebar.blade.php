@@ -230,7 +230,7 @@
                   <a href="#" class="nav-link active">
                     <i class="nav-icon fas fa-dollar-sign"></i>
                     <p>
-                      Receitas
+                      Grupo Econômico
                       <span class="right badge badge-danger"></span>
                     </p>
                   </a>
@@ -239,7 +239,7 @@
                   <a href="#" class="nav-link custom-active">
                     <i class="nav-icon fas fa-money-bill-wave"></i>
                     <p>
-                      Despesas
+                      Bandeira:
                       <span class="right badge badge-danger"></span>
                     </p>
                   </a>
@@ -248,7 +248,7 @@
                   <a href="#" class="nav-link custom-active-green">
                     <i class="fas fa-chart-line"></i>
                     <p>
-                      Minhas Finanças
+                      Unidade:
                       <span class="right badge badge-danger"></span>
                     </p>
                   </a>
@@ -257,7 +257,7 @@
                   <a href="#" class="nav-link custom-active-lembrete">
                     <i class="nav-icon fas fa-clock"></i>
                     <p>
-                      Lembretes
+                      Colaborador:
                       <span class="right badge badge-danger"></span>
                     </p>
                   </a>
@@ -270,15 +270,7 @@
                   </a>
                 </li>
 
-                <li class="nav-item">
-                  <a href="" class="nav-link custom-active-gray">
-                    <i class="nav-icon fas fa-tags"></i>
-                    <p>
-                      Catogorias
-                      <span class="right badge badge-danger"></span>
-                    </p>
-                  </a>
-                </li>
+
                 <li class="nav-item">
                   <a href="{{route('relatorios.index')}}" class="nav-link custom-active-rel">
                     <i class="fas fa-chart-pie"></i>
@@ -288,114 +280,8 @@
                     </p>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link custom-active-calendar">
-                    <i class="nav-icon fas fa-calendar-alt"></i>
-                    <p>
-                      Eventos Financeiro
-                      <span class="right badge badge-danger"></span>
-                    </p>
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a href="" class="nav-link custom-active-gra">
-                    <i class="nav-icon fas fa-chart-line"></i>
-                    <p>
-                      Gráficos
-                      <span class="right badge badge-danger"></span>
-                    </p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link custom-active-blue">
-                    <i class="nav-icon fas fa-address-book"></i>
-                    <p>
-                      Contatos
-                      <span class="right badge badge-danger"></span>
-                    </p>
-                  </a>
-                </li>
-
-                <li class="nav-header">OUTRAS FUNCIONALIDADES</li>
-                <li class="nav-item">
-                  <a href="pages/calendar.html" class="nav-link">
-                    <i class="nav-icon far fa-calendar-alt"></i>
-                    <p>
-                      Calendário
-                      <span class="badge badge-info right">2</span>
-                    </p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-book"></i>
-                    <p>
-                      Outros
-                      <i class="fas fa-angle-left right"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="nav-icon far fa-plus-square"></i>
-                    <p>
-                      Extras
-                      <i class="fas fa-angle-left right"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="#" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>
-                          Login & Register v1
-                          <i class="fas fa-angle-left right"></i>
-                        </p>
-                      </a>
-                      <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                          <a href="pages/examples/login.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Login v1</p>
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a href="pages/examples/register.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Register v1</p>
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a href="pages/examples/forgot-password.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Forgot Password v1</p>
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-search"></i>
-                    <p>
-                      Pesquisar
-                      <i class="fas fa-angle-left right"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="pages/search/simple.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Simple Search</p>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
+              </ul>
+              </li>
               </ul>
             </nav>
             <!-- /.sidebar-menu -->

@@ -91,6 +91,6 @@ Route::delete('/colaborador/destroy/{colaborador}', [ColaboradorController::clas
 Route::get('/relatorios/exportar/pdf', [RelatorioController::class, 'exportarPDF'])->name('relatorios.exportar.pdf');
 Route::get('/relatorios/exportar/excel', [RelatorioController::class, 'exportarExcel'])->name('relatorios.exportar.excel');
 Route::get('/relatorio', [RelatorioController::class, 'index'])->name('relatorios.index');
-Route::get('/relatorio/gerar', [RelatorioController::class, 'gerarPDF'])->name('relatorios.despesas');
-Route::get('/reports', [RelatorioController::class, 'gerarPDF'])->name('report.despesas');
+Route::get('/relatorio/gerar', [RelatorioController::class, 'gerarPDF'])->name('relatorios.colaborador');
+Route::get('/reports', [RelatorioController::class, 'gerarPDF'])->name('report.colaborador');
 Route::get('/relatorios/comparacao', [RelatorioController::class, 'comparar'])->name('relatorios.comparacao');

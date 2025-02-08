@@ -34,8 +34,6 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-});
-
 require __DIR__ . '/auth.php';
 
 //users
@@ -47,7 +45,7 @@ Route::post('/users/update/{id}', [UserController::class, 'update'])->name('user
 Route::delete('/users/destroy/{users}', [UserController::class, 'destroy'])->name('users.destroy');
 
 //grupo economico
-Route::get('/grupo-economico', [GrupoEconomicoController::class, 'index'])->name('grupo-economico.index');
+Route::get('/grupos-economico', [GrupoEconomicoController::class, 'index'])->name('grupos-economico.index');
 Route::get('/grupo-economico', [GrupoEconomicoController::class, 'create'])->name('grupo-economico.create');
 Route::post('/grupo-economico', [GrupoEconomicoController::class, 'store'])->name('grupo-economico.store');
 Route::get('/grupo-economico/edit/{id}', [GrupoEconomicoController::class, 'edit'])->name('grupo-economico.edit');
@@ -55,29 +53,29 @@ Route::post('/grupo-economico/update/{id}', [GrupoEconomicoController::class, 'u
 Route::delete('/grupo-economico/destroy/{grupo-economico}', [GrupoEconomicoController::class, 'destroy'])->name('grupo-economico.destroy');
 
 //bandeira
-Route::get('/bandeira', [BandeiraController::class, 'index'])->name('bandeira.index');
-Route::get('/bandeira', [BandeiraController::class, 'create'])->name('bandeira.create');
-Route::post('/bandeira', [BandeiraController::class, 'store'])->name('bandeira.store');
-Route::get('/bandeira/edit/{id}', [BandeiraController::class, 'edit'])->name('bandeira.edit');
-Route::post('/bandeira/update/{id}', [BandeiraController::class, 'update'])->name('bandeira.update');
-Route::delete('/bandeira/destroy/{bandeira}', [BandeiraController::class, 'destroy'])->name('bandeira.destroy');
+Route::get('/bandeiras', [BandeiraController::class, 'index'])->name('bandeiras.index');
+Route::get('/bandeiras/create', [BandeiraController::class, 'create'])->name('bandeiras.create');
+Route::post('/bandeiras/store', [BandeiraController::class, 'store'])->name('bandeiras.store');
+Route::get('/bandeiras/edit/{id}', [BandeiraController::class, 'edit'])->name('bandeiras.edit');
+Route::post('/bandeiras/update/{id}', [BandeiraController::class, 'update'])->name('bandeiras.update');
+Route::delete('/bandeiras/destroy/{bandeira}', [BandeiraController::class, 'destroy'])->name('bandeiras.destroy');
 
 
 //unidades
 Route::get('/unidades', [UnidadeController::class, 'index'])->name('unidades.index');
-Route::get('/unidades', [UnidadeController::class, 'create'])->name('unidades.create');
-Route::post('/unidades', [UnidadeController::class, 'store'])->name('unidades.store');
+Route::get('/unidades/create', [UnidadeController::class, 'create'])->name('unidades.create');
+Route::post('/unidades/store', [UnidadeController::class, 'store'])->name('unidades.store');
 Route::get('/unidades/edit/{id}', [UnidadeController::class, 'edit'])->name('unidades.edit');
 Route::post('/unidades/update/{id}', [UnidadeController::class, 'update'])->name('unidades.update');
 Route::delete('/unidades/destroy/{unidades}', [UnidadeController::class, 'destroy'])->name('unidades.destroy');
 
 //colaborador
-Route::get('/colaborador', [ColaboradorController::class, 'index'])->name('unidades.index');
-Route::get('/colaborador', [ColaboradorController::class, 'create'])->name('unidades.create');
-Route::post('/colaborador', [ColaboradorController::class, 'store'])->name('colaborador.store');
-Route::get('/colaborador/edit/{id}', [ColaboradorController::class, 'edit'])->name('colaborador.edit');
-Route::post('/colaborador/update/{id}', [ColaboradorController::class, 'update'])->name('colaborador.update');
-Route::delete('/colaborador/destroy/{colaborador}', [ColaboradorController::class, 'destroy'])->name('unidades.destroy');
+Route::get('/colaboradores', [ColaboradorController::class, 'index'])->name('colaboradores.index');
+Route::get('/colaboradores/create', [ColaboradorController::class, 'create'])->name('colaboradores.create');
+Route::post('/colaboradores/store', [ColaboradorController::class, 'store'])->name('colaboradores.store');
+Route::get('/colaboradores/edit/{id}', [ColaboradorController::class, 'edit'])->name('colaboradores.edit');
+Route::post('/colaboradores/update/{id}', [ColaboradorController::class, 'update'])->name('colaboradores.update');
+Route::delete('/colaboradores/destroy/{colaboradores}', [ColaboradorController::class, 'destroy'])->name('colaboradores.destroy');
 
 
 //relatorios
@@ -87,3 +85,4 @@ Route::get('/relatorio', [RelatorioController::class, 'index'])->name('relatorio
 Route::get('/relatorio/gerar', [RelatorioController::class, 'gerarPDF'])->name('relatorios.colaborador');
 Route::get('/reports', [RelatorioController::class, 'gerarPDF'])->name('report.colaborador');
 Route::get('/relatorios/comparacao', [RelatorioController::class, 'comparar'])->name('relatorios.comparacao');
+});

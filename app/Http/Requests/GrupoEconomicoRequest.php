@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreReceitasRequest extends FormRequest
+class GrupoEconomicoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,14 @@ class StoreReceitasRequest extends FormRequest
     public function rules()
     {
         return [
-                'descricao' => 'required|string|max:255',
-                'valor' => 'required',
-                'categoria_id' => 'required',
-                'status' => 'required',
+            'nome' => 'required|string|max:255', 
         ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'nome.required' => 'O nome do colaborador é obrigatório.',
+            'nome.string' => 'O nome do colaborador deve ser um texto.',];
     }
 }

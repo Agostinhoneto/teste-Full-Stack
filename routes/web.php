@@ -9,8 +9,6 @@ use App\Http\Controllers\GrupoEconomicoController;
 use App\Http\Controllers\RelatorioController;
 use App\Http\Controllers\UnidadeController;
 use App\Http\Controllers\UserController;
-use App\Models\Colaborador;
-use App\Models\GrupoEconomico;
 use Illuminate\Support\Facades\Route;
 
 /*

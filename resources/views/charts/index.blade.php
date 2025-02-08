@@ -51,7 +51,7 @@
     <div class="container mt-5">
         <div class="card shadow-sm">
             <div class="card-body">
-                <h4 class="card-title text-center mb-4">Despesas e Receitas</h4>
+                <h4 class="card-title text-center mb-4"></h4>
                 <div>
                     <canvas id="despesasReceitasChart"></canvas>
                 </div>

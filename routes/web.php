@@ -3,7 +3,6 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\BandeiraController;
-use App\Http\Controllers\ChartController;
 use App\Http\Controllers\ColaboradorController;
 use App\Http\Controllers\GrupoEconomicoController;
 use App\Http\Controllers\RelatorioController;

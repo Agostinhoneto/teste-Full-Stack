@@ -4,9 +4,12 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\BandeiraController;
 use App\Http\Controllers\ChartController;
+use App\Http\Controllers\ColaboradorController;
 use App\Http\Controllers\GrupoEconomicoController;
 use App\Http\Controllers\RelatorioController;
+use App\Http\Controllers\UnidadeController;
 use App\Http\Controllers\UserController;
+use App\Models\Colaborador;
 use App\Models\GrupoEconomico;
 use Illuminate\Support\Facades\Route;
 
@@ -65,6 +68,24 @@ Route::post('/bandeira', [BandeiraController::class, 'store'])->name('bandeira.s
 Route::get('/bandeira/edit/{id}', [BandeiraController::class, 'edit'])->name('bandeira.edit');
 Route::post('/bandeira/update/{id}', [BandeiraController::class, 'update'])->name('bandeira.update');
 Route::delete('/bandeira/destroy/{bandeira}', [BandeiraController::class, 'destroy'])->name('bandeira.destroy');
+
+
+//unidades
+Route::get('/unidades', [UnidadeController::class, 'index'])->name('unidades.index');
+Route::get('/unidades', [UnidadeController::class, 'create'])->name('unidades.create');
+Route::post('/unidades', [UnidadeController::class, 'store'])->name('unidades.store');
+Route::get('/unidades/edit/{id}', [UnidadeController::class, 'edit'])->name('unidades.edit');
+Route::post('/unidades/update/{id}', [UnidadeController::class, 'update'])->name('unidades.update');
+Route::delete('/unidades/destroy/{unidades}', [UnidadeController::class, 'destroy'])->name('unidades.destroy');
+
+//colaborador
+Route::get('/colaborador', [ColaboradorController::class, 'index'])->name('unidades.index');
+Route::get('/colaborador', [ColaboradorController::class, 'create'])->name('unidades.create');
+Route::post('/colaborador', [ColaboradorController::class, 'store'])->name('colaborador.store');
+Route::get('/colaborador/edit/{id}', [ColaboradorController::class, 'edit'])->name('colaborador.edit');
+Route::post('/colaborador/update/{id}', [ColaboradorController::class, 'update'])->name('colaborador.update');
+Route::delete('/colaborador/destroy/{colaborador}', [ColaboradorController::class, 'destroy'])->name('unidades.destroy');
+
 
 //relatorios
 Route::get('/relatorios/exportar/pdf', [RelatorioController::class, 'exportarPDF'])->name('relatorios.exportar.pdf');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Colaborador;
 use App\Models\Despesas;
 use App\Models\Relatorios;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
@@ -14,9 +15,9 @@ class RelatorioController extends Controller
 {
     public function index()
     {
-        $despesas = Despesas::all();
-        $total = $despesas->sum('valor');
-        return view('relatorios.index', compact('despesas', 'total'));
+        $colaborador = Colaborador::all();
+        $total = $colaborador->sum('valor');
+        return view('relatorios.index', compact('colaborador', 'total'));
     }
 
     public function gerarPDF(Request $request)
@@ -25,12 +26,12 @@ class RelatorioController extends Controller
         $filter1 = $request->input('filter1');
         $filter2 = $request->input('filter2');
 
-        $reports = Despesas::all();
+        $reports = Colaborador::all();
 
         $data = [
-            'title' => 'Relatório de Despesas',
+            'title' => 'Relatório de Colaboradores',
             'date' => date('m/d/Y'),
-            'depesas' => \App\Models\Despesas::all()
+            'depesas' => \App\Models\Colaborador::all()
         ];
 
         $pdf = FacadePdf::loadView('relatorios.pdf', compact('data', 'reports'));
@@ -40,26 +41,26 @@ class RelatorioController extends Controller
 
     public function filter(Request $request)
     {
-        $query = Despesas::query();
+        $query = Colaborador::query();
 
-        if ($request->has('descricao')) {
-            $query->where('descricao', 'like', '%' . $request->input('descricao') . '%');
+        if ($request->has('nome')) {
+            $query->where('nome', 'like', '%' . $request->input('nome') . '%');
         }
 
-        if ($request->has('valor')) {
-            $query->where('valor', $request->input('valor'));
+        if ($request->has('email')) {
+            $query->where('email', $request->input('email'));
         }
 
-        $despesas = $query->orderBy('created_at', 'desc')->get();
+        $colaborador = $query->orderBy('created_at', 'desc')->get();
 
-        return view('relatorios.pdf', compact('despesas'));
+        return view('relatorios.pdf', compact('colaborador'));
     }
 
     public function exportarPDF()
     {
-        $dados = Relatorios::all(); // Dados do relatório
+        $dados = Relatorios::all(); 
         $pdf = FacadePdf::loadView('relatorios.pdf', compact('dados'));
-        return $pdf->download('relatorio-financeiro.pdf');
+        return $pdf->download('relatorio-colaborador.pdf');
     }
 
     public function comparar(Request $request)
@@ -68,11 +69,11 @@ class RelatorioController extends Controller
         $periodo2 = $request->input('periodo2');
 
         // Lógica para calcular os gastos de cada período
-        $gastosPeriodo1 = Despesas::whereMonth('data', date('m', strtotime($periodo1)))
+        $gastosPeriodo1 = Colaborador::whereMonth('data', date('m', strtotime($periodo1)))
             ->whereYear('data', date('Y', strtotime($periodo1)))
             ->sum('valor');
 
-        $gastosPeriodo2 = Despesas::whereMonth('data', date('m', strtotime($periodo2)))
+        $gastosPeriodo2 = Colaborador::whereMonth('data', date('m', strtotime($periodo2)))
             ->whereYear('data', date('Y', strtotime($periodo2)))
             ->sum('valor');
 

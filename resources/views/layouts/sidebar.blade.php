@@ -227,7 +227,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                  <a href="{{route('grupos-economico.index')}}" class="nav-link active">
+                  <a href="#" class="nav-link active">
                     <i class="nav-icon fas fa-dollar-sign"></i>
                     <p>
                       Grupo Econômicos
@@ -236,7 +236,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('bandeiras.index')}}" class="nav-link custom-active">
+                  <a href="#" class="nav-link custom-active">
                     <i class="nav-icon fas fa-money-bill-wave"></i>
                     <p>
                       Bandeiras
@@ -245,7 +245,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('unidades.index')}}" class="nav-link custom-active-green">
+                  <a href="#" class="nav-link custom-active-green">
                     <i class="fas fa-chart-line"></i>
                     <p>
                       Unidades
@@ -254,7 +254,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('colaboradores.index')}}" class="nav-link custom-active-lembrete">
+                  <a href="#" class="nav-link custom-active-lembrete">
                     <i class="nav-icon fas fa-clock"></i>
                     <p>
                       Colaboradores

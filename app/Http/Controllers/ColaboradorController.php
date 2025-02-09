@@ -12,7 +12,7 @@ class ColaboradorController extends Controller
     public function index()
     {
         $colaboradores = Colaborador::all();
-        return view('colaboradores.index', compact('colaboradores'));
+        return view('colaborador.index', compact('colaboradores'));
     }
  
     /**
@@ -45,7 +45,7 @@ class ColaboradorController extends Controller
         $colaborador->password = bcrypt($validatedData['password']);
         $colaborador->save();
 
-        return view('colaboradores.index', compact('colaboradores'));
+        return view('colaborador.index', compact('colaboradores'));
     }
     /**
      * Display the specified resource.
@@ -94,7 +94,7 @@ class ColaboradorController extends Controller
         }
         $colaborador->save();
 
-        return redirect()->route('colaboradores.index')->with('success', 'Colaborador updated successfully');
+        return redirect()->route('colaborador.index')->with('success', 'Colaborador updated successfully');
     }
 
     /**
@@ -108,6 +108,6 @@ class ColaboradorController extends Controller
         $colaborador = Colaborador::findOrFail($id);
         $colaborador->delete();
 
-        return redirect()->route('colaboradores.index')->with('success', 'Colaborador deleted successfully');
+        return redirect()->route('colaborador.index')->with('success', 'Colaborador deleted successfully');
     }
 }

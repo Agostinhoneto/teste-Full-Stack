@@ -16,7 +16,7 @@ class BandeiraController extends Controller
 
     public function create()
     {
-        return view('bandeira.create');
+        return view('bandeiras.create');
     }
 
     public function store(Request $request)
@@ -26,17 +26,17 @@ class BandeiraController extends Controller
         ]);
 
         Bandeira::create($request->all());
-        return redirect()->route('bandeira.index')->with('success', 'Bandeira criada com sucesso!');
+        return redirect()->route('bandeiras.index')->with('success', 'Bandeira criada com sucesso!');
     }
 
     public function show(Bandeira $bandeira)
     {
-        return view('bandeira.show', compact('bandeira'));
+        return view('bandeiras.show', compact('bandeira'));
     }
 
     public function edit(Bandeira $bandeira)
     {
-        return view('bandeira.edit', compact('bandeira'));
+        return view('bandeiras.edit', compact('bandeira'));
     }
 
     public function update(Request $request, Bandeira $bandeira)
@@ -46,12 +46,12 @@ class BandeiraController extends Controller
         ]);
 
         $bandeira->update($request->all());
-        return redirect()->route('bandeira.index')->with('success', 'Bandeira atualizada com sucesso!');
+        return redirect()->route('bandeiras.index')->with('success', 'Bandeira atualizada com sucesso!');
     }
 
     public function destroy(Bandeira $bandeira)
     {
         $bandeira->delete();
-        return redirect()->route('bandeira.index')->with('success', 'Bandeira removida com sucesso!');
+        return redirect()->route('bandeiras.index')->with('success', 'Bandeira removida com sucesso!');
     }
 }

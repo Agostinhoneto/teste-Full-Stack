@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @return void
      */
     protected $commands = [
-        Commands\EnviarEmailCommand::class,
+        //Commands\EnviarEmailCommand::class,
     ];
 
     protected function schedule(Schedule $schedule)

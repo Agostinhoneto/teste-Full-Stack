@@ -25,6 +25,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+
+
+
 Route::get('/logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
 
 

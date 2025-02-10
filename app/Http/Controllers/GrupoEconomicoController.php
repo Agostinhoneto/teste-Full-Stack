@@ -8,10 +8,12 @@ use Illuminate\Validation\Rule;
 
 class GrupoEconomicoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $grupos = GrupoEconomico::all();
-        return view('grupos.index', compact('grupos'));
+        $mensagem = $request->session()->get('mensagem');
+
+        return view('grupos.index', compact('grupos','mensagem'));
     }
 
     public function create()
@@ -21,18 +23,9 @@ class GrupoEconomicoController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nome' => 'required|string|max:255',
-            'cnpj' => ['required', 'string', 'size:18', 'unique:grupo_economicos,cnpj', function ($attribute, $value, $fail) {
-                if (!$this->validarCnpj($value)) {
-                    $fail('O CNPJ informado não é válido.');
-                }
-            }],
-        ]);
-
         GrupoEconomico::create($request->all());
 
-        return redirect()->route('grupos.index')->with('success', 'Grupo Econômico criado com sucesso.');
+        return redirect()->route('grupo-economico.index')->with('success', 'Grupo Econômico criado com sucesso.');
     }
 
     public function edit(GrupoEconomico $grupo)

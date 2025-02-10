@@ -236,7 +236,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link custom-active">
+                  <a href="{{route('bandeira.index')}}" class="nav-link custom-active">
                     <i class="nav-icon fas fa-money-bill-wave"></i>
                     <p>
                       Bandeiras

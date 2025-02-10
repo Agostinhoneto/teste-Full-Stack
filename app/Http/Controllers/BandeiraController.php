@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Bandeira;
+use App\Models\GrupoEconomico;
 
 class BandeiraController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $bandeiras = Bandeira::all();
-        return view('bandeiras.index', compact('bandeiras'));
+        $grupos = GrupoEconomico::all();
+        $mensagem = $request->session()->get('mensagem');
+        return view('bandeira.index', compact('bandeiras', 'mensagem','grupos'));
     }
 
     public function create()
@@ -21,12 +24,8 @@ class BandeiraController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nome' => 'required|string|max:255',
-        ]);
-
         Bandeira::create($request->all());
-        return redirect()->route('bandeiras.index')->with('success', 'Bandeira criada com sucesso!');
+        return redirect()->route('bandeira.index')->with('success', 'Bandeira criada com sucesso!');
     }
 
     public function show(Bandeira $bandeira)

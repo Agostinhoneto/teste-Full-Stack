@@ -14,6 +14,6 @@ class Bandeira extends Model
 
     public function grupo()
     {
-        return $this->hasMany(GrupoEconomico::class);
+        return $this->belongsTo(GrupoEconomico::class, 'grupo_economico_id'); 
     }
 }

@@ -12,7 +12,8 @@
         margin-right: 5px;
     }
 
-    .table th, .table td {
+    .table th,
+    .table td {
         text-align: center;
         vertical-align: middle;
     }
@@ -24,95 +25,65 @@
     <div class="container my-4">
         <!-- Formulário de Adicionar Novo Usuário -->
         <div class="card mb-4">
-            <div class="card-header bg-primary text-white">Adicionar Novo Usuário</div>
+            <div class="card-header bg-primary text-white">Adicionar Nova Bandeira</div>
             <div class="card-body">
-                <form action="{{ route('users.store') }}" method="POST">
+                <form action="{{ route('bandeira.store') }}" method="POST">
                     @csrf
                     <div class="row">
-                        <!-- Nome -->
                         <div class="col-md-6 mb-3">
                             <label for="name" class="form-label">Nome</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}">
-                            @error('name')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <!-- E-mail -->
-                        <div class="col-md-6 mb-3">
-                            <label for="email" class="form-label">E-mail</label>
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
-                            @error('email')
+                            <input type="text" class="form-control @error('nome') is-invalid @enderror" id="name" name="nome" value="{{ old('nome') }}">
+                            @error('nome')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
-
-                    <div class="row">
-                        <!-- Senha -->
-                        <div class="col-md-6 mb-3">
-                            <label for="password" class="form-label">Senha</label>
-                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
-                            @error('password')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <!-- Administrador -->
-                        <div class="col-md-6 mb-3">
-                            <label for="is_admin">Administrador?</label>
-                            <select name="is_admin" id="is_admin" class="form-control">
-                                <option value="0" {{ old('is_admin') == 0 ? 'selected' : '' }}>Não</option>
-                                <option value="1" {{ old('is_admin') == 1 ? 'selected' : '' }}>Sim</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- Permissões -->
                     <div class="mb-3">
-                        <label for="permissions" class="form-label">Permissões:</label>
-                        <select name="permissions[]" id="permissions" class="form-select" multiple>
-                            @foreach($permissions as $permission)
-                            <option value="{{ $permission->id }}" {{ in_array($permission->id, old('permissions', [])) ? 'selected' : '' }}>
-                                {{ $permission->name }}
+                        <label for="grupo_economico" class="form-label fw-bold">
+                            <i class="fas fa-building"></i> Grupo Econômico:
+                        </label>
+                        <select name="grupo_economico_id" id="grupo_economico" class="form-control select2bs4 border-primary shadow-sm" required>
+                            <option value="" selected disabled>Selecione um grupo econômico...</option>
+                            @foreach($grupos as $g)
+                            <option value="{{ $g->id }}">
+                                {{ $g->nome }}
                             </option>
                             @endforeach
                         </select>
                     </div>
 
-                    <!-- Botão Salvar -->
+
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
             </div>
         </div>
 
-        <!-- Lista de Usuários -->
         <div class="card">
-            <div class="card-header bg-secondary text-white">Lista de Usuários</div>
+            <div class="card-header bg-secondary text-white">Lista de Bandeiras</div>
             <div class="card-body">
                 <table class="table table-bordered table-hover">
                     <thead class="thead-dark">
                         <tr>
                             <th>#</th>
                             <th>Nome</th>
-                            <th>E-mail</th>
+                            <th>Grupo Econômico</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($users as $user)
+                        @foreach($bandeiras as $b)
                         <tr>
-                            <td>{{ $user->id }}</td>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
+                            <td>{{ $b->id }}</td>
+                            <td>{{ $b->nome }}</td>
+                            <td>{{ $b->grupo->nome }}</td>
                             <td>
-                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">
+                                <a href="{{ route('bandeira.edit', $b->id) }}" class="btn btn-warning btn-sm">
                                     <i class="fas fa-edit"></i> Editar
                                 </a>
-                                <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;">
+                                <form action="{{ route('bandeira.destroy', $b->id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente excluir este usuário?')">
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente excluir este Bandeira?')">
                                         <i class="fas fa-trash-alt"></i> Excluir
                                     </button>
                                 </form>

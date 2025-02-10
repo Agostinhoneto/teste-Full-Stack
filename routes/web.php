@@ -62,7 +62,7 @@ Route::prefix('grupo-economico')->name('grupo-economico.')->group(function () {
 Route::prefix('bandeira')->name('bandeira.')->group(function () {
     Route::get('/', [BandeiraController::class, 'index'])->name('index');
     Route::get('/create', [BandeiraController::class, 'create'])->name('create');
-    Route::post('/', [BandeiraController::class, 'store'])->name('store');
+    Route::post('/store', [BandeiraController::class, 'store'])->name('store');
     Route::get('/edit/{id}', [BandeiraController::class, 'edit'])->name('edit');
     Route::put('/update/{id}', [BandeiraController::class, 'update'])->name('update');
     Route::delete('/destroy/{bandeira}', [BandeiraController::class, 'destroy'])->name('destroy');

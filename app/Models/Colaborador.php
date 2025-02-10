@@ -13,7 +13,7 @@ class Colaborador extends Model
 
     public function unidades()
     {
-        return $this->hasMany(Unidade::class);
+        return $this->belongsTo(Unidade::class, 'unidade_id'); 
     }
 }
 

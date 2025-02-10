@@ -4,15 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Colaborador;
+use App\Models\Unidade;
 use Illuminate\Http\Request;
 
 class ColaboradorController extends Controller
 {
   
-    public function index()
+    public function index(Request $request)
     {
         $colaboradores = Colaborador::all();
-        return view('colaborador.index', compact('colaboradores'));
+        $unidades = Unidade::all();
+
+        $mensagem = $request->session()->get('mensagem');
+        return view('colaborador.index', compact('colaboradores','mensagem','unidades'));
     }
  
     /**

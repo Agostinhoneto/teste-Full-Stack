@@ -245,7 +245,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link custom-active-green">
+                  <a href="{{route('unidades.index')}}" class="nav-link custom-active-green">
                     <i class="fas fa-chart-line"></i>
                     <p>
                       Unidades
@@ -254,7 +254,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link custom-active-lembrete">
+                  <a href="{{route('colaborador.index')}}" class="nav-link custom-active-lembrete">
                     <i class="nav-icon fas fa-clock"></i>
                     <p>
                       Colaboradores

@@ -72,7 +72,7 @@ Route::prefix('bandeira')->name('bandeira.')->group(function () {
 Route::prefix('unidades')->name('unidades.')->group(function () {
     Route::get('/', [UnidadeController::class, 'index'])->name('index');
     Route::get('/create', [UnidadeController::class, 'create'])->name('create');
-    Route::post('/', [UnidadeController::class, 'store'])->name('store');
+    Route::post('/store', [UnidadeController::class, 'store'])->name('store');
     Route::get('/edit/{id}', [UnidadeController::class, 'edit'])->name('edit');
     Route::put('/update/{id}', [UnidadeController::class, 'update'])->name('update');
     Route::delete('/destroy/{unidade}', [UnidadeController::class, 'destroy'])->name('destroy');
@@ -82,7 +82,7 @@ Route::prefix('unidades')->name('unidades.')->group(function () {
 Route::prefix('colaborador')->name('colaborador.')->group(function () {
     Route::get('/', [ColaboradorController::class, 'index'])->name('index');
     Route::get('/create', [ColaboradorController::class, 'create'])->name('create');
-    Route::post('/', [ColaboradorController::class, 'store'])->name('store');
+    Route::post('/store', [ColaboradorController::class, 'store'])->name('store');
     Route::get('/edit/{id}', [ColaboradorController::class, 'edit'])->name('edit');
     Route::put('/update/{id}', [ColaboradorController::class, 'update'])->name('update');
     Route::delete('/destroy/{colaborador}', [ColaboradorController::class, 'destroy'])->name('destroy');

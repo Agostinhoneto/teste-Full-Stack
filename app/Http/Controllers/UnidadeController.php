@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bandeira;
 use Illuminate\Http\Request;
 use App\Models\Unidade;
 
 class UnidadeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $unidades = Unidade::all();
-        return view('unidades.index', compact('unidades'));
+        $bandeira = Bandeira::all();
+        $mensagem = $request->session()->get('mensagem');
+        return view('unidades.index', compact('unidades','bandeira','mensagem'));
     }
 
     public function create()
@@ -20,11 +23,6 @@ class UnidadeController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nome' => 'required|string|max:255',
-            'sigla' => 'nullable|string|max:10',
-        ]);
-
         Unidade::create($request->all());
         return redirect()->route('unidades.index')->with('success', 'Unidade criada com sucesso!');
     }

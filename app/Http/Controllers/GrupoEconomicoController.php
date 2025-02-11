@@ -51,15 +51,23 @@ class GrupoEconomicoController extends Controller
 
         $grupo->update($request->all());
 
-        return redirect()->route('grupos.index')->with('success', 'Grupo Econômico atualizado com sucesso.');
+        return redirect()->route('grupo-economico.index')->with('success', 'Grupo Econômico atualizado com sucesso.');
     }
 
-    public function destroy(GrupoEconomico $grupo)
+    
+    public function destroy($id)
     {
-        $grupo->delete();
+        try {
+            $grupo = GrupoEconomico::findOrFail($id);
+            $grupo->delete();
 
-        return redirect()->route('grupos.index')->with('success', 'Grupo Econômico excluído com sucesso.');
+            return redirect()->route('grupo-economico.index')->with('success', 'Grupo excluído com sucesso!');
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Erro ao excluir categoria: ' . $e->getMessage());
+            return back()->withErrors('Erro ao excluir a categoria. Tente novamente mais tarde.');
+        }
     }
+
 
     private function validarCnpj($cnpj)
     {

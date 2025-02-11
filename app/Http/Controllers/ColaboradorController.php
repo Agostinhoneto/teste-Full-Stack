@@ -67,11 +67,17 @@ class ColaboradorController extends Controller
         return redirect()->route('colaborador.index')->with('success', 'Colaborador ');
     }
 
+     
     public function destroy($id)
     {
-        $colaborador = Colaborador::findOrFail($id);
-        $colaborador->delete();
+        try {
+            $colaborador = Colaborador::findOrFail($id);
+            $colaborador->delete();
 
-        return redirect()->route('colaborador.index')->with('success', 'Colaborador');
+            return redirect()->route('colaborador.index')->with('success', 'Colaborador excluída com sucesso!');
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Erro ao excluir categoria: ' . $e->getMessage());
+            return back()->withErrors('Erro ao excluir a categoria. Tente novamente mais tarde.');
+        }
     }
 }

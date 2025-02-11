@@ -25,6 +25,10 @@ class UnidadeController extends Controller
     {
         Unidade::create([
             'nome' => $request->nome,
+            'nome_fantasia'  => $request->nome_fantasia,
+            'razao_social' => $request->razao_social,
+            'cnpj' => $request->cnpj,
+            'bandeira_id' => $request->bandeira_id,
             'usuario_id' => auth()->id(), 
         ]);
         return redirect()->route('unidades.index')->with('success', 'Unidade criada com sucesso!');
@@ -49,9 +53,18 @@ class UnidadeController extends Controller
         return redirect()->route('unidades.index')->with('success', 'Unidade atualizada com sucesso!');
     }
 
-    public function destroy(Unidade $unidade)
+    
+    public function destroy($id)
     {
-        $unidade->delete();
-        return redirect()->route('unidades.index')->with('success', 'Unidade removida com sucesso!');
+        try {
+            $unidade = Unidade::findOrFail($id);
+            $unidade->delete();
+
+            return redirect()->route('unidades.index')->with('success', 'Unidade excluída com sucesso!');
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Erro ao excluir categoria: ' . $e->getMessage());
+            return back()->withErrors('Erro ao excluir a categoria. Tente novamente mais tarde.');
+        }
     }
+
 }

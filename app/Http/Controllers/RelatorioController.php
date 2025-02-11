@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Colaborador;
-use App\Models\Despesas;
 use App\Models\Relatorios;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
-use Barryvdh\DomPDF\PDF;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Mpdf\Mpdf;
 
 class RelatorioController extends Controller
 {

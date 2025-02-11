@@ -66,7 +66,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/create', [BandeiraController::class, 'create'])->name('create');
         Route::post('/store', [BandeiraController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [BandeiraController::class, 'edit'])->name('edit');
-        Route::put('/update/{id}', [BandeiraController::class, 'update'])->name('update');
+        Route::post('/update/{bandeira}', [BandeiraController::class, 'update'])->name('update');
         Route::delete('/destroy/{bandeira}', [BandeiraController::class, 'destroy'])->name('destroy');
     });
 

@@ -23,7 +23,10 @@ class UnidadeController extends Controller
 
     public function store(Request $request)
     {
-        Unidade::create($request->all());
+        Unidade::create([
+            'nome' => $request->nome,
+            'usuario_id' => auth()->id(), 
+        ]);
         return redirect()->route('unidades.index')->with('success', 'Unidade criada com sucesso!');
     }
 

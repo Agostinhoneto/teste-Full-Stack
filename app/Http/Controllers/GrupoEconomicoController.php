@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\Controller;
 use App\Models\GrupoEconomico;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class GrupoEconomicoController extends Controller
         $grupos = GrupoEconomico::all();
         $mensagem = $request->session()->get('mensagem');
 
-        return view('grupos.index', compact('grupos','mensagem'));
+        return view('grupos.index', compact('grupos', 'mensagem'));
     }
 
     public function create()
@@ -23,8 +24,10 @@ class GrupoEconomicoController extends Controller
 
     public function store(Request $request)
     {
-        GrupoEconomico::create($request->all());
-
+        GrupoEconomico::create([
+            'nome' => $request->nome,
+            'usuario_id' => auth()->id(),
+        ]);
         return redirect()->route('grupo-economico.index')->with('success', 'Grupo Econômico criado com sucesso.');
     }
 

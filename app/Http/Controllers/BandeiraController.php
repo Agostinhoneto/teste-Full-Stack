@@ -24,7 +24,12 @@ class BandeiraController extends Controller
 
     public function store(Request $request)
     {
-        Bandeira::create($request->all());
+        Bandeira::create([
+            'nome' => $request->nome,
+            'grupo_economico_id' => $request->grupo_economico_id,
+            'usuario_id' => auth()->id(),
+        ]);
+        
         return redirect()->route('bandeira.index')->with('success', 'Bandeira criada com sucesso!');
     }
 
@@ -33,19 +38,32 @@ class BandeiraController extends Controller
         return view('bandeiras.show', compact('bandeira'));
     }
 
-    public function edit(Bandeira $bandeira)
+    public function edit(Request $request, Bandeira $bandeira, $id)
     {
-        return view('bandeiras.edit', compact('bandeira'));
+        $slot = 'Editar Bandeira';
+        $header = 'Editar Bandeira';
+        $bandeira = Bandeira::find($id);
+        $grupos   = GrupoEconomico::all();
+
+        return view('bandeira.edit', compact('bandeira','grupos', 'header' , 'slot'));
+
+        /*
+        try {
+            $despesas = Bandeira::find($id);
+            $mensagem = $request->session()->get('mensagem');
+           
+            return view('despesas.edit', compact('despesas', 'categorias', 'mensagem'));
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors('Erro ao carregar o formulário de criação: ' . $e->getMessage());
+        }
+       */     
     }
 
-    public function update(Request $request, Bandeira $bandeira)
+    public function update(Request $request, Bandeira $bandeira, $id)
     {
-        $request->validate([
-            'nome' => 'required|string|max:255',
-        ]);
-
+        $bandeira = Bandeira::findOrFail($id);
         $bandeira->update($request->all());
-        return redirect()->route('bandeiras.index')->with('success', 'Bandeira atualizada com sucesso!');
+        return redirect()->route('bandeiras.index')->with('success', 'Despesas atualizada com sucesso!');
     }
 
     public function destroy(Bandeira $bandeira)

@@ -9,5 +9,5 @@ class GrupoEconomico extends Model
 {
     use HasFactory;
     protected $table = 'grupos_economicos';
-    protected $fillable = ['nome'];
+    protected $fillable = ['usuario_id','nome'];
 }

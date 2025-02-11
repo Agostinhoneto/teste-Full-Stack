@@ -72,8 +72,8 @@ class GrupoEconomicoController extends Controller
 
             return redirect()->route('grupo-economico.index')->with('success', 'Grupo excluído com sucesso!');
         } catch (\Exception $e) {
-            \Illuminate\Support\Facades\Log::error('Erro ao excluir categoria: ' . $e->getMessage());
-            return back()->withErrors('Erro ao excluir a categoria. Tente novamente mais tarde.');
+            \Illuminate\Support\Facades\Log::error('Erro ao excluir grupo: ' . $e->getMessage());
+            return back()->withErrors('Erro ao excluir a grupo. Tente novamente mais tarde.');
         }
     }
 }

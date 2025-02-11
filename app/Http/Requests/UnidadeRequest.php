@@ -24,14 +24,24 @@ class UnidadeRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'required|string|max:255', 
+            'nome_fantasia' => 'required|string|max:255',
+            'razao_social' => 'required|string|max:255',
+            'cnpj' => 'required|string|size:18',
+            'bandeira_id' => 'required|integer|exists:bandeiras,id',
         ];
     }
 
     public function messages(): array
     {
         return [
-            'nome.required' => 'O nome do colaborador é obrigatório.',
-            'nome.string' => 'O nome do colaborador deve ser um texto.',];
+            'nome_fantasia.required' => 'O nome fantasia é obrigatório.',
+            'nome_fantasia.string' => 'O nome fantasia deve ser um texto.',
+            'razao_social.required' => 'A razão social é obrigatória.',
+            'razao_social.string' => 'A razão social deve ser um texto.',
+            'cnpj.required' => 'O CNPJ é obrigatório.',
+            'cnpj.string' => 'O CNPJ deve não ser um texto.',
+            'cnpj.size' => 'O CNPJ deve ter 14 caracteres.',
+            'bandeira.required' => 'A bandeira é obrigatória.',
+        ];
     }
 }

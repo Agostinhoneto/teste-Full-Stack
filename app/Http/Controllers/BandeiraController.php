@@ -30,11 +30,12 @@ class BandeiraController extends Controller
     {
         try {
             Bandeira::create([
-            'nome' => $request->nome,
-            'grupo_economico_id' => $request->grupo_economico_id,
-            'usuario_id' => auth()->id(),
+                'nome' => $request->nome,
+                'grupo_economico_id' => $request->grupo_economico_id,
+                'usuario_id' => auth()->id(),
             ]);
 
+            $request->session()->flash('mensagem', 'Bandeira criada com sucesso!');
             return redirect()->route('bandeira.index')->with('success', 'Bandeira criada com sucesso!');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors('Erro ao criar a bandeira: ' . $e->getMessage());
@@ -58,28 +59,35 @@ class BandeiraController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->withErrors('Erro ao carregar a bandeira para edição: ' . $e->getMessage());
         }
-
     }
 
-    public function update(BandeiraRequest $request, Bandeira $bandeira, $id)
+    public function update(BandeiraRequest $request, $id)
     {
         try {
             $bandeira = Bandeira::findOrFail($id);
             $bandeira->update([
-            'nome' => $request->nome,
-            'grupo_economico_id' => $request->grupo_economico_id,
-            'usuario_id' => auth()->id(),
+                'nome' => $request->nome,
+                'grupo_economico_id' => $request->grupo_economico_id,
+                'usuario_id' => auth()->id(),
             ]);
 
+            $request->session()->flash('mensagem', 'Bandeira atualizada com sucesso!');
             return redirect()->route('bandeira.index')->with('success', 'Bandeira atualizada com sucesso!');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors('Erro ao atualizar a bandeira: ' . $e->getMessage());
         }
     }
 
-    public function destroy(Bandeira $bandeira)
+    public function destroy(Bandeira $bandeira,$id)
     {
-        $bandeira->delete();
-        return redirect()->route('bandeiras.index')->with('success', 'Bandeira removida com sucesso!');
+        try {
+            $colaborador = Bandeira::findOrFail($id);
+            $colaborador->delete();
+
+            return redirect()->route('bandeira.index')->with('success', 'bandeira excluída com sucesso!');
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Erro ao excluir categoria: ' . $e->getMessage());
+            return back()->withErrors('Erro ao excluir a bandeira. Tente novamente mais tarde.');
+        }
     }
 }

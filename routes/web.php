@@ -47,7 +47,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/store', [UserController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit');
         Route::put('/update/{id}', [UserController::class, 'update'])->name('update');
-        Route::delete('/destroy/{user}', [UserController::class, 'destroy'])->name('destroy');
+        Route::delete('/destroy/{id}', [UserController::class, 'destroy'])->name('destroy');
     });
 
     // 🏢 Grupo Econômico
@@ -57,7 +57,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/store', [GrupoEconomicoController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [GrupoEconomicoController::class, 'edit'])->name('edit');
         Route::put('/update/{id}', [GrupoEconomicoController::class, 'update'])->name('update');
-        Route::delete('/destroy/{grupoEconomico}', [GrupoEconomicoController::class, 'destroy'])->name('destroy');
+        Route::delete('/destroy/{id}', [GrupoEconomicoController::class, 'destroy'])->name('destroy');
     });
 
     // 🏴 Bandeira
@@ -66,8 +66,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/create', [BandeiraController::class, 'create'])->name('create');
         Route::post('/store', [BandeiraController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [BandeiraController::class, 'edit'])->name('edit');
-        Route::post('/update/{bandeira}', [BandeiraController::class, 'update'])->name('update');
-        Route::delete('/destroy/{bandeira}', [BandeiraController::class, 'destroy'])->name('destroy');
+        Route::put('/update/{id}', [BandeiraController::class, 'update'])->name('update');
+        Route::delete('/destroy/{id}', [BandeiraController::class, 'destroy'])->name('destroy');
     });
 
     // 🏬 Unidades
@@ -77,7 +77,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/store', [UnidadeController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [UnidadeController::class, 'edit'])->name('edit');
         Route::put('/update/{id}', [UnidadeController::class, 'update'])->name('update');
-        Route::delete('/destroy/{unidade}', [UnidadeController::class, 'destroy'])->name('destroy');
+        Route::delete('/destroy/{id}', [UnidadeController::class, 'destroy'])->name('destroy');
     });
 
     // 👨‍💼 Colaborador
@@ -87,7 +87,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/store', [ColaboradorController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [ColaboradorController::class, 'edit'])->name('edit');
         Route::put('/update/{id}', [ColaboradorController::class, 'update'])->name('update');
-        Route::delete('/destroy/{colaborador}', [ColaboradorController::class, 'destroy'])->name('destroy');
+        Route::delete('/destroy/{id}', [ColaboradorController::class, 'destroy'])->name('destroy');
     });
 
     // 📊 Relatórios

@@ -18,31 +18,37 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Formulário de Edição</h3>
+                                <h3 class="card-title">Formulário de Edição Bandeira</h3>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('bandeira.update',$bandeira->id)}}">
+                                <form action="{{ route('bandeira.update',$bandeira->id)}}" method="POST">
                                     @csrf
-                                    @method('POST')
-                                    <div class="mb-3">
+                                    @method('PUT')
+                                      <div class="col-md-3 mb-3">
                                         <div class="form-group">
                                             <label for="nome">Nome</label>
                                             <input type="text" class="form-control" id="nome" name="nome" value="{{ $bandeira->nome }}" required>
                                         </div>
+                                      </div>
+                                      <div class="col-md-3 mb-3">
+
                                         <label for="grupo_economico" class="form-label fw-bold">
                                             <i class="fas fa-building"></i> Grupo Econômico:
                                         </label>
                                         <select name="grupo_economico_id" id="grupo_economico" class="form-control select2bs4 border-primary shadow-sm" required>
                                             <option value="" disabled>Selecione um grupo econômico...</option>
                                             @foreach($grupos as $g)
-                                            <option value="{{ $g->id }}"
-                                                @if($bandeira->grupo_economico_id == $g->id) selected @endif>
+                                            <option value="{{ $g->id }}" @if($bandeira->grupo_economico_id == $g->id) selected @endif>
                                                 {{ $g->nome }}
                                             </option>
                                             @endforeach
                                         </select>
+                                      </div>
                                     </div>
+                                    <div class="col-md-3 mb-3">
+
                                     <button type="submit" class="btn btn-primary">Editar</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

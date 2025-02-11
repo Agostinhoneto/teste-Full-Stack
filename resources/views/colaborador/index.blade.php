@@ -1,6 +1,5 @@
 @include('layouts.topo')
 @extends('layout')
-@include('mensagem', ['mensagem' => $mensagem])
 
 <style>
     .card-header {
@@ -59,7 +58,7 @@
                                 <option value="" selected disabled>Selecione uma Unidade...</option>
                                 @foreach($unidades as $u)
                                 <option value="{{ $u->id }}">
-                                    {{ $u->nome }}
+                                    {{ $u->nome_fantasia }}
                                 </option>
                                 @endforeach
                             </select>
@@ -90,7 +89,7 @@
                             <td>{{ $col->nome }}</td>
                             <td>{{ $col->cpf }}</td>
                             <td>{{ $col->email }}</td>
-                            <td>{{ $col->unidades->nome }}</td>   
+                            <td>{{ $col->unidades->nome_fantasia }}</td>   
                             <td>
                                 <a href="{{ route('colaborador.edit', $col->id) }}" class="btn btn-warning btn-sm">
                                     <i class="fas fa-edit"></i> Editar

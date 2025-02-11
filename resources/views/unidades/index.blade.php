@@ -29,42 +29,55 @@
                 <form action="{{ route('unidades.store') }}" method="POST">
                     @csrf
                     <div class="row">
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <label for="nome_fantasia" class="form-label">Nome Fantasia</label>
                             <input type="text" class="form-control @error('nome_fantasia') is-invalid @enderror" id="nome_fantasia" name="nome_fantasia" value="{{ old('nome_fantasia') }}">
                             @error('nome_fantasia')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="name" class="form-label">Nome Fantasia</label>
+                        <div class="col-md-4 mb-3">
+                            <label for="razao_social" class="form-label">Razão Social</label>
                             <input type="text" class="form-control @error('razao_social') is-invalid @enderror" id="razao_social" name="razao_social" value="{{ old('razao_social') }}">
                             @error('razao_social')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label for="name" class="form-label">CNPJ</label>
-                            <input type="text" class="form-control @error('cnpj') is-invalid @enderror" id="cnpj" name="cnpj" value="{{ old('cnpj') }}">
+                        <div class="col-md-4 mb-3">
+                            <label for="cnpj" class="form-label">CNPJ</label>
+                            <input type="text" class="form-control @error('cnpj') is-invalid @enderror" id="cnpj" name="cnpj" value="{{ old('cnpj') }}" oninput="mascaraCNPJ(this)" maxlength="18">
                             @error('cnpj')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="mb-3">
-                            <label for="bandeira_id" class="form-label fw-bold">
-                                <i class="fas fa-building"></i> Grupo Econômico:
-                            </label>
-                            <select name="bandeira_id" id="bandeira_id" class="form-control select2bs4 border-primary shadow-sm" required>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="bandeira_id" class="form-label">Bandeira :</label>
+                            <select name="bandeira_id" id="bandeira_id" class="form-control @error('bandeira_id') is-invalid @enderror" required>
                                 <option value="" selected disabled>Selecione uma Bandeira...</option>
                                 @foreach($bandeira as $b)
-                                <option value="{{ $b->id }}">
+                                <option value="{{ $b->id }}" {{ old('bandeira_id') == $b->id ? 'selected' : '' }}>
                                     {{ $b->nome }}
                                 </option>
                                 @endforeach
                             </select>
+                            @error('bandeira_id')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
-                    </div>                  
+                    </div>
+
+                    <script>
+                        function mascaraCNPJ(input) {
+                            let value = input.value.replace(/\D/g, '');
+                            value = value.replace(/^(\d{2})(\d)/, '$1.$2');
+                            value = value.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+                            value = value.replace(/\.(\d{3})(\d)/, '.$1/$2');
+                            value = value.replace(/(\d{4})(\d)/, '$1-$2');
+                            input.value = value;
+                        }
+                    </script>
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
             </div>

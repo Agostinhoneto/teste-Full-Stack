@@ -44,12 +44,22 @@
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="name" class="form-label">CPF</label>
-                            <input type="text" class="form-control @error('cpf') is-invalid @enderror" id="cpf" name="cpf" value="{{ old('cpf') }}">
+                            <label for="cpf" class="form-label">CPF</label>
+                            <input type="text" class="form-control @error('cpf') is-invalid @enderror" id="cpf" name="cpf" value="{{ old('cpf') }}" oninput="mascaraCPF(this)" maxlength="14">
                             @error('cpf')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+
+                        <script>
+                            function mascaraCPF(input) {
+                                var value = input.value.replace(/\D/g, '');
+                                value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                                value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                                value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+                                input.value = value;
+                            }
+                        </script>
                         <div class="mb-3">
                             <label for="unidade_id" class="form-label fw-bold">
                                 <i class="fas fa-building"></i>Unidades:
@@ -63,7 +73,7 @@
                                 @endforeach
                             </select>
                         </div>
-                    </div>                  
+                    </div>
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
             </div>
@@ -89,7 +99,7 @@
                             <td>{{ $col->nome }}</td>
                             <td>{{ $col->cpf }}</td>
                             <td>{{ $col->email }}</td>
-                            <td>{{ $col->unidades->nome_fantasia }}</td>   
+                            <td>{{ $col->unidades->nome_fantasia }}</td>
                             <td>
                                 <a href="{{ route('colaborador.edit', $col->id) }}" class="btn btn-warning btn-sm">
                                     <i class="fas fa-edit"></i> Editar

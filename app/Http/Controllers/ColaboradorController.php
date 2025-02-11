@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ColaboradorRequest;
 use App\Models\Colaborador;
 use App\Models\Unidade;
 use Database\Seeders\Admin;
@@ -13,9 +14,14 @@ class ColaboradorController extends Controller
   
     public function index(Request $request)
     {
-        $colaboradores = Colaborador::all();
-        $unidades = Unidade::all();
-        return view('colaborador.index', compact('colaboradores','unidades'));
+        try {
+            $colaboradores = Colaborador::all();
+            $unidades = Unidade::all();
+            return view('colaborador.index', compact('colaboradores', 'unidades'));
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Erro ao carregar colaboradores: ' . $e->getMessage());
+            return back()->withErrors('Erro ao carregar colaboradores. Tente novamente mais tarde.');
+        }
     }
  
     public function create()
@@ -24,22 +30,32 @@ class ColaboradorController extends Controller
     }
 
    
-    public function store(Request $request)
+    public function store(ColaboradorRequest $request)
     {
-        Colaborador::create([
+        try {
+            Colaborador::create([
             'nome' => $request->nome,
             'email' => $request->email,
             'cpf' => $request->cpf,
             'unidade_id' => $request->unidade_id,
             'usuario_id' => auth()->id(), 
-        ]);
-        return view('colaborador.index');
+            ]);
+            return redirect()->route('colaborador.index')->with('success', 'Colaborador criado com sucesso!');
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Erro ao criar colaborador: ' . $e->getMessage());
+            return back()->withErrors('Erro ao criar colaborador. Tente novamente mais tarde.');
+        }
     }
   
     public function show($id)
     {
-        $colaborador = Colaborador::findOrFail($id);
-        return view('colaborador.show', compact('colaborador'));
+        try {
+            $colaborador = Colaborador::findOrFail($id);
+            return view('colaborador.show', compact('colaborador'));
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Erro ao exibir colaborador: ' . $e->getMessage());
+            return back()->withErrors('Erro ao exibir colaborador. Tente novamente mais tarde.');
+        }
     }
 
     public function edit($id)
@@ -48,23 +64,21 @@ class ColaboradorController extends Controller
         return view('colaborador.edit', compact('colaborador'));
     }
 
-    public function update(Request $request, $id)
+    public function update(ColaboradorRequest $request, $id)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $id,
-            'password' => 'nullable|string|min:8|confirmed',
-        ]);
-
-        $colaborador = Colaborador::findOrFail($id);
-        $colaborador->name = $validatedData['name'];
-        $colaborador->email = $validatedData['email'];
-        if (!empty($validatedData['password'])) {
-            $colaborador->password = bcrypt($validatedData['password']);
+        try {
+            $colaborador = Colaborador::findOrFail($id);
+            $colaborador->update([
+            'nome' => $request->nome,
+            'email' => $request->email,
+            'cpf' => $request->cpf,
+            'unidade_id' => $request->unidade_id,
+            ]);
+            return redirect()->route('colaborador.index')->with('success', 'Colaborador atualizado com sucesso!');
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Erro ao atualizar colaborador: ' . $e->getMessage());
+            return back()->withErrors('Erro ao atualizar colaborador. Tente novamente mais tarde.');
         }
-        $colaborador->save();
-
-        return redirect()->route('colaborador.index')->with('success', 'Colaborador ');
     }
 
      

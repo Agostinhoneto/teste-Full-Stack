@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BandeiraRequest;
 use Illuminate\Http\Request;
 use App\Models\Bandeira;
 use App\Models\GrupoEconomico;
@@ -11,26 +12,33 @@ class BandeiraController extends Controller
 {
     public function index(Request $request)
     {
-        $bandeiras = Bandeira::all();
-        $grupos = GrupoEconomico::all();
-        $mensagem = $request->session()->get('mensagem');
-        return view('bandeira.index', compact('bandeiras', 'mensagem','grupos'));
+        try {
+            $bandeiras = Bandeira::all();
+            $grupos = GrupoEconomico::all();
+            $mensagem = $request->session()->get('mensagem');
+            return view('bandeira.index', compact('bandeiras', 'mensagem', 'grupos'));
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors('Erro ao carregar a lista de bandeiras: ' . $e->getMessage());
+        }
     }
-
     public function create()
     {
         return view('bandeiras.create');
     }
 
-    public function store(Request $request)
+    public function store(BandeiraRequest $request)
     {
-        Bandeira::create([
+        try {
+            Bandeira::create([
             'nome' => $request->nome,
             'grupo_economico_id' => $request->grupo_economico_id,
             'usuario_id' => auth()->id(),
-        ]);
-        
-        return redirect()->route('bandeira.index')->with('success', 'Bandeira criada com sucesso!');
+            ]);
+
+            return redirect()->route('bandeira.index')->with('success', 'Bandeira criada com sucesso!');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors('Erro ao criar a bandeira: ' . $e->getMessage());
+        }
     }
 
     public function show(Bandeira $bandeira)
@@ -40,30 +48,33 @@ class BandeiraController extends Controller
 
     public function edit(Request $request, Bandeira $bandeira, $id)
     {
-        $slot = 'Editar Bandeira';
-        $header = 'Editar Bandeira';
-        $bandeira = Bandeira::find($id);
-        $grupos   = GrupoEconomico::all();
-
-        return view('bandeira.edit', compact('bandeira','grupos', 'header' , 'slot'));
-
-        /*
         try {
-            $despesas = Bandeira::find($id);
-            $mensagem = $request->session()->get('mensagem');
-           
-            return view('despesas.edit', compact('despesas', 'categorias', 'mensagem'));
+            $slot = 'Editar Bandeira';
+            $header = 'Editar Bandeira';
+            $bandeira = Bandeira::findOrFail($id);
+            $grupos = GrupoEconomico::all();
+
+            return view('bandeira.edit', compact('bandeira', 'grupos', 'header', 'slot'));
         } catch (\Exception $e) {
-            return redirect()->back()->withErrors('Erro ao carregar o formulário de criação: ' . $e->getMessage());
+            return redirect()->back()->withErrors('Erro ao carregar a bandeira para edição: ' . $e->getMessage());
         }
-       */     
+
     }
 
-    public function update(Request $request, Bandeira $bandeira, $id)
+    public function update(BandeiraRequest $request, Bandeira $bandeira, $id)
     {
-        $bandeira = Bandeira::findOrFail($id);
-        $bandeira->update($request->all());
-        return redirect()->route('bandeiras.index')->with('success', 'Despesas atualizada com sucesso!');
+        try {
+            $bandeira = Bandeira::findOrFail($id);
+            $bandeira->update([
+            'nome' => $request->nome,
+            'grupo_economico_id' => $request->grupo_economico_id,
+            'usuario_id' => auth()->id(),
+            ]);
+
+            return redirect()->route('bandeira.index')->with('success', 'Bandeira atualizada com sucesso!');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors('Erro ao atualizar a bandeira: ' . $e->getMessage());
+        }
     }
 
     public function destroy(Bandeira $bandeira)

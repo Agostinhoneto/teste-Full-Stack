@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\GrupoEconomicoRequest;
 use App\Models\GrupoEconomico;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 class GrupoEconomicoController extends Controller
 {

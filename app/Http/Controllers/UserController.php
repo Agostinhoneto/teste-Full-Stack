@@ -57,7 +57,7 @@ class UserController extends Controller
      * @param StoreUserRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreUserRequest $request)
+    public function store(Request $request)
     {
         try {
             $user = User::create([

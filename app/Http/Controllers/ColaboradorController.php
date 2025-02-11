@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ColaboradorRequest;
 use App\Models\Colaborador;
 use App\Models\Unidade;
-use Database\Seeders\Admin;
 use Illuminate\Http\Request;
 
 class ColaboradorController extends Controller

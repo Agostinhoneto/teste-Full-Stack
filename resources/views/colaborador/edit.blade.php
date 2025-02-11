@@ -37,9 +37,18 @@
                                             <label for="cpf">CPF</label>
                                             <input type="text" class="form-control" id="cpf" name="cpf" value="{{ $colaborador->cpf }}" required>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="unidade">Unidade</label>
-                                            <input type="text" class="form-control" id="unidade" name="unidade" value="{{ $colaborador->unidade }}" required>
+                                        <div class="col-md-3 mb-3">
+                                            <label for="unidade" class="form-label fw-bold">
+                                                <i class="fas fa-building"></i> Unidade:
+                                            </label>
+                                            <select name="unidade_id" id="unidade_id" class="form-control select2bs4 border-primary shadow-sm" required>
+                                                <option value="" disabled selected>Selecione uma Unidade...</option>
+                                                @foreach($unidades as $uni)
+                                                <option value="{{ $uni->id }}" @if($colaborador->unidade_id == $uni->id) selected @endif>
+                                                    {{ $uni->nome_fantasia }}
+                                                </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Editar</button>

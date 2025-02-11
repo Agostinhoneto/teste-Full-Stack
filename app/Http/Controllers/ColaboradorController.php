@@ -61,7 +61,8 @@ class ColaboradorController extends Controller
     public function edit($id)
     {
         $colaborador = Colaborador::findOrFail($id);
-        return view('colaborador.edit', compact('colaborador'));
+        $unidades = Unidade::all();
+        return view('colaborador.edit', compact('colaborador','unidades'));
     }
 
     public function update(ColaboradorRequest $request, $id)

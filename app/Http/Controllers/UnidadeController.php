@@ -35,18 +35,16 @@ class UnidadeController extends Controller
         return view('unidades.show', compact('unidade'));
     }
 
-    public function edit(Unidade $unidade)
+    public function edit($id)
     {
-        return view('unidades.edit', compact('unidade'));
+        $unidade = Unidade::find($id);
+        $bandeira = Bandeira::all();
+        return view('unidades.edit', compact('unidade','bandeira'));
     }
 
     public function update(Request $request, Unidade $unidade)
     {
-        $request->validate([
-            'nome' => 'required|string|max:255',
-            'sigla' => 'nullable|string|max:10',
-        ]);
-
+   
         $unidade->update($request->all());
         return redirect()->route('unidades.index')->with('success', 'Unidade atualizada com sucesso!');
     }

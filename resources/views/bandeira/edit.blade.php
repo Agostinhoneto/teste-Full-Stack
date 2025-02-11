@@ -42,7 +42,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Salvar</button>
+                                    <button type="submit" class="btn btn-primary">Editar</button>
                                 </form>
                             </div>
                         </div>

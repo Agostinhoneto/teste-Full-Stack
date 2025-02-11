@@ -31,8 +31,10 @@ class GrupoEconomicoController extends Controller
         return redirect()->route('grupo-economico.index')->with('success', 'Grupo Econômico criado com sucesso.');
     }
 
-    public function edit(GrupoEconomico $grupo)
+    public function edit(Request $request, GrupoEconomico $grupo,$id)
     {
+        $grupo = GrupoEconomico::find($id);
+
         return view('grupos.edit', compact('grupo'));
     }
 

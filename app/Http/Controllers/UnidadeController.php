@@ -69,11 +69,10 @@ class UnidadeController extends Controller
         }
     }
 
-    public function update(UnidadeRequest $request, $id)
+    public function update(Request $request, $id)
     {
         try {
             $unidade = Unidade::findOrFail($id);
-            // dd($unidade);    
             $unidade->update([
                 'nome' => $request->nome,
                 'nome_fantasia'  => $request->nome_fantasia,

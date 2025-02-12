@@ -31,14 +31,19 @@ class GrupoEconomicoController extends Controller
     {
         try {
             GrupoEconomico::create([
-                'nome' => $request->nome,
-                'usuario_id' => auth()->id(),
+            'nome' => $request->nome,
+            'usuario_id' => auth()->id(),
             ]);
-            return redirect()->route('grupo-economico.index')->with('success', 'Grupo Econômico criado com sucesso.');
+
+            $request->session()->flash('mensagem', 'Grupo Econômico criado com sucesso.');
+
+            return redirect()->route('grupo-economico.index');
         } catch (\Exception $e) {
             \Illuminate\Support\Facades\Log::error('Erro ao criar grupo econômico: ' . $e->getMessage());
-            return back()->withErrors('Erro ao criar o grupo econômico. Tente novamente mais tarde.');
+        
+            return back()->with('error', 'Erro ao criar o grupo econômico. Tente novamente mais tarde.');
         }
+        
     }
 
     public function edit(Request $request, GrupoEconomico $grupo, $id)
@@ -53,7 +58,9 @@ class GrupoEconomicoController extends Controller
         try {
             $grupo->update([
                 'nome' => $request->nome,
+                'usuario_id' => auth()->id(),
             ]);
+            $request->session()->flash('mensagem', 'Grupo Econômico atualizado com sucesso.');
 
             return redirect()->route('grupo-economico.index')->with('success', 'Grupo Econômico atualizado com sucesso.');
         } catch (\Exception $e) {
@@ -63,11 +70,12 @@ class GrupoEconomicoController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
         try {
             $grupo = GrupoEconomico::findOrFail($id);
             $grupo->delete();
+            $request->session()->flash('mensagem', 'Grupo Econômico excluido com sucesso.');
 
             return redirect()->route('grupo-economico.index')->with('success', 'Grupo excluído com sucesso!');
         } catch (\Exception $e) {

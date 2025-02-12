@@ -21,22 +21,23 @@
                                 <h3 class="card-title">Formulário de Edição Unidades</h3>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('unidades.update',$unidade->id)}}">
+                                <form action="{{ route('unidades.update',$unidade->id)}}" method="POST">
                                     @csrf
-                                    @method('POST')
+                                    @method('PUT')
                                     <div class="mb-3">
                                         <div class="form-group">
-                                            <label for="nome">Nome Fantasia</label>
-                                            <input type="text" class="form-control" id="nome" name="nome_fantasia" value="{{ $unidade->nome_fantasia }}" required>
+                                            <label for="nome_fantasia">Nome Fantasia</label>
+                                            <input type="text" class="form-control" id="nome_fantasia" name="nome_fantasia" value="{{ $unidade->nome_fantasia }}" required>
                                         </div>
+
                                         <div class="form-group">
-                                            <label for="nome">Razão Social</label>
-                                            <input type="text" class="form-control" id="nome" name="nome" value="{{ $unidade->razao_social }}" required>
+                                            <label for="razao_social">Razão Social</label>
+                                            <input type="text" class="form-control" id="razao_social" name="razao_social" value="{{ $unidade->razao_social }}" required>
                                         </div>
-                                       
+
                                         <div class="form-group">
-                                            <label for="nome">CNPJ</label>
-                                            <input type="text" class="form-control" id="nome" name="nome" value="{{ $unidade->cnpj }}" required>
+                                            <label for="cnpj">CNPJ</label>
+                                            <input type="text" class="form-control" id="cnpj" name="cnpj" value="{{ $unidade->cnpj }}" required>
                                         </div>
                                         <label for="grupo_economico" class="form-label fw-bold">
                                             <i class="fas fa-building"></i> Bandeira :
@@ -60,5 +61,6 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 @include('layouts.footer')

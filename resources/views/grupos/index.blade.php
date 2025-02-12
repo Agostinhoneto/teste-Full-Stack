@@ -1,7 +1,6 @@
 @include('layouts.topo')
 @extends('layout')
 @include('mensagem', ['mensagem' => $mensagem])
-
 <style>
     .card-header {
         font-weight: bold;
@@ -20,6 +19,7 @@
 
 <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-200 font-roboto">
     @include('layouts.sidebar')
+    @include('components.flash-message')
 
     <div class="container my-4">
         <div class="card mb-4">

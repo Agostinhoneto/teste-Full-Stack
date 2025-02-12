@@ -40,7 +40,7 @@ class UnidadeController extends Controller
             ]);
             return redirect()->route('unidades.index')->with('success', 'Unidade criada com sucesso!');
         } catch (\Exception $e) {
-            dd($e);
+            // dd($e);
             \Illuminate\Support\Facades\Log::error('Erro ao criar unidade: ' . $e->getMessage());
             return back()->withErrors('Erro ao criar a unidade. Tente novamente mais tarde.');
         }
@@ -69,24 +69,28 @@ class UnidadeController extends Controller
         }
     }
 
-    public function update(UnidadeRequest $request, Unidade $unidade)
+    public function update(UnidadeRequest $request, $id)
     {
-        
         try {
+            $unidade = Unidade::findOrFail($id);
+            // dd($unidade);    
             $unidade->update([
-            'nome' => $request->nome,
-            'nome_fantasia'  => $request->nome_fantasia,
-            'razao_social' => $request->razao_social,
-            'cnpj' => $this->validarCnpj($request->cnpj) ? $request->cnpj : throw new \Exception('CNPJ inválido'),
-            'bandeira_id' => $request->bandeira_id,
-            'usuario_id' => auth()->id(), 
+                'nome' => $request->nome,
+                'nome_fantasia'  => $request->nome_fantasia,
+                'razao_social' => $request->razao_social,
+                'cnpj' => $request->cnpj,
+                'bandeira_id' => $request->bandeira_id,
+                'usuario_id' => auth()->id(),
             ]);
+    
             return redirect()->route('unidades.index')->with('success', 'Unidade atualizada com sucesso!');
         } catch (\Exception $e) {
+            dd($e);
             \Illuminate\Support\Facades\Log::error('Erro ao atualizar unidade: ' . $e->getMessage());
             return back()->withErrors('Erro ao atualizar a unidade. Tente novamente mais tarde.');
         }
-     }
+    }
+    
 
     
     public function destroy($id)

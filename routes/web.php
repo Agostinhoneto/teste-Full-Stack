@@ -56,7 +56,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/create', [GrupoEconomicoController::class, 'create'])->name('create');
         Route::post('/store', [GrupoEconomicoController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [GrupoEconomicoController::class, 'edit'])->name('edit');
-        Route::put('/update/{id}', [GrupoEconomicoController::class, 'update'])->name('update');
+        Route::put('/update/{grupo}', [GrupoEconomicoController::class, 'update'])->name('update');
         Route::delete('/destroy/{id}', [GrupoEconomicoController::class, 'destroy'])->name('destroy');
     });
 

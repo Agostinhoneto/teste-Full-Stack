@@ -21,9 +21,9 @@
                                 <h3 class="card-title">Formulário de Edição Grupo Econômico</h3>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('grupo-economico.update',$grupo->id)}}">
+                                <form action="{{ route('grupo-economico.update',$grupo->id)}}"  method="POST">
                                     @csrf
-                                    @method('POST')
+                                    @method('PUT')
                                     <div class="mb-3">
                                         <div class="form-group">
                                             <label for="nome">Nome</label>

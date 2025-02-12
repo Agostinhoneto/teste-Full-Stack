@@ -57,7 +57,7 @@ Antes de começar, certifique-se de que seu ambiente atende aos seguintes requis
 
 Após executar os seeders, você pode usar as seguintes credenciais para acessar a conta de administrador:
 
-- **Email:** admin@admin.com
+- **Email:** admin@admin.com (dados estão do Admin seeders )
 - **Senha:** password
 
 *Caso queira criar um novo usuário, há a opção na tela de cadastro do próprio ADMIN.*

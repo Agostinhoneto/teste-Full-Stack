@@ -37,7 +37,7 @@
 
                                         <div class="form-group">
                                             <label for="cnpj">CNPJ</label>
-                                            <input type="text" class="form-control" id="cnpj" name="cnpj" value="{{ $unidade->cnpj }}" required>
+                                            <input type="text" class="form-control" id="cnpj" name="cnpj" value="{{ $unidade->cnpj }}" oninput="mascaraCNPJ(this)" maxlength="18" required>
                                         </div>
                                         <label for="grupo_economico" class="form-label fw-bold">
                                             <i class="fas fa-building"></i> Bandeira :
@@ -50,8 +50,18 @@
                                             </option>
                                             @endforeach
                                         </select>
-
                                     </div>
+
+                                    <script>
+                                        function mascaraCNPJ(input) {
+                                            let value = input.value.replace(/\D/g, '');
+                                            value = value.replace(/^(\d{2})(\d)/, '$1.$2');
+                                            value = value.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+                                            value = value.replace(/\.(\d{3})(\d)/, '.$1/$2');
+                                            value = value.replace(/(\d{4})(\d)/, '$1-$2');
+                                            input.value = value;
+                                        }
+                                    </script>
                                     <button type="submit" class="btn btn-primary">Editar</button>
                                 </form>
                             </div>

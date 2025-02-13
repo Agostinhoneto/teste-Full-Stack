@@ -14,9 +14,21 @@ class UnidadeTest extends TestCase
     public function pode_criar_uma_unidade()
     {
         $unidade = Unidade::create([
-            'nome' => 'Unidade Teste',
+            'usuario_cadastrante_id' => 1,
+            'usuario_alterante_id' => 2,
+            'nome_fantasia' => 'Nome Fantasia Teste',
+            'razao_social' => 'Razao Social Teste',
+            'cnpj' => '00.000.000/0000-00',
+            'bandeira_id' => 1,
         ]);
 
-        $this->assertDatabaseHas('unidades', ['nome' => 'Unidade Teste']);
+        $this->assertDatabaseHas('unidades', [
+            'usuario_cadastrante_id' => 1,
+            'usuario_alterante_id' => 2,
+            'nome_fantasia' => 'Nome Fantasia Teste',
+            'razao_social' => 'Razao Social Teste',
+            'cnpj' => '00.000.000/0000-00',
+            'bandeira_id' => 1,
+        ]);
     }
 }

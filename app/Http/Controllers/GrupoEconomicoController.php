@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\GrupoEconomicoRequest;
 use App\Models\GrupoEconomico;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class GrupoEconomicoController extends Controller
 {
@@ -35,13 +37,10 @@ class GrupoEconomicoController extends Controller
             'usuario_cadastrante_id' => auth()->id(),
             ]);
 
-            $request->session()->flash('mensagem', 'Grupo Econômico criado com sucesso.');
-
-            return redirect()->route('grupo-economico.index');
+            return redirect()->route('grupo-economico.index')->with('success', '✅ Unidade criada com sucesso!');
         } catch (\Exception $e) {
-            \Illuminate\Support\Facades\Log::error('Erro ao criar grupo econômico: ' . $e->getMessage());
-        
-            return back()->with('error', 'Erro ao criar o grupo econômico. Tente novamente mais tarde.');
+            \Illuminate\Support\Facades\Log::error('Erro ao criar unidade: ' . $e->getMessage());
+            return back()->withErrors('Erro ao criar a unidade. Tente novamente mais tarde.');
         }
         
     }

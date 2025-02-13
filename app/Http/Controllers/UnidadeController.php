@@ -6,6 +6,8 @@ use App\Http\Requests\UnidadeRequest;
 use App\Models\Bandeira;
 use Illuminate\Http\Request;
 use App\Models\Unidade;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Log;
 
 class UnidadeController extends Controller
 {
@@ -32,13 +34,14 @@ class UnidadeController extends Controller
         try {
             Unidade::create([
                 'nome' => $request->nome,
-                'nome_fantasia'  => $request->nome_fantasia,
+                'nome_fantasia' => $request->nome_fantasia,
                 'razao_social' => $request->razao_social,
-                'cnpj' => $request->cnpj ,
+                'cnpj' => $request->cnpj,
                 'bandeira_id' => $request->bandeira_id,
-                'usuario_cadastrante_id' => auth()->id(), 
+                'usuario_cadastrante_id' => auth()->id(),
             ]);
-            return redirect()->route('unidades.index')->with('success', 'Unidade criada com sucesso!');
+
+            return redirect()->route('unidades.index')->with('success', '✅ Unidade criada com sucesso!');
         } catch (\Exception $e) {
             \Illuminate\Support\Facades\Log::error('Erro ao criar unidade: ' . $e->getMessage());
             return back()->withErrors('Erro ao criar a unidade. Tente novamente mais tarde.');
@@ -80,7 +83,7 @@ class UnidadeController extends Controller
                 'bandeira_id' => $request->bandeira_id,
                 'usuario_alterante_id' => auth()->id(),
             ]);
-    
+
             return redirect()->route('unidades.index')->with('success', 'Unidade atualizada com sucesso!');
         } catch (\Exception $e) {
             dd($e);
@@ -88,9 +91,9 @@ class UnidadeController extends Controller
             return back()->withErrors('Erro ao atualizar a unidade. Tente novamente mais tarde.');
         }
     }
-    
 
-    
+
+
     public function destroy($id)
     {
         try {

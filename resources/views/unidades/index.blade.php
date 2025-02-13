@@ -1,6 +1,20 @@
 @include('layouts.topo')
 @extends('layout')
-@include('mensagem', ['mensagem' => $mensagem])
+@if(session('success'))
+    <div class="alert alert-success text-center w-75 mx-auto">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if($errors->any())
+    <div class="alert alert-danger text-center w-75 mx-auto">
+        <ul class="mb-0">
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
 <style>
     .card-header {

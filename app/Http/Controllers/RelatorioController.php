@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ExportarRelatorio;
 use App\Models\Colaborador;
 use App\Models\Relatorios;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
@@ -54,7 +55,7 @@ class RelatorioController extends Controller
 
     public function exportarPDF()
     {
-        $dados = Relatorios::all(); 
+        $dados = Relatorios::all();
         $pdf = FacadePdf::loadView('relatorios.pdf', compact('dados'));
         return $pdf->download('relatorio-colaborador.pdf');
     }
@@ -73,5 +74,15 @@ class RelatorioController extends Controller
             ->sum('valor');
 
         return view('relatorios.comparacao', compact('colaboradorPeriodo1', 'colaboradorPeriodo2', 'periodo1', 'periodo2'));
+    }
+
+
+    public function exportar(Request $request)
+    {
+        $relatorioId = $request->input('relatorio_id');
+
+        ExportarRelatorio::dispatch($relatorioId);
+
+        return response()->json(['message' => 'Exportação iniciada!']);
     }
 }

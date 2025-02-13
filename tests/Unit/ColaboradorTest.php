@@ -13,10 +13,11 @@ class ColaboradorTest extends TestCase
     /** @test */
     public function pode_criar_um_colaborador()
     {
-        $colaborador = Colaborador::factory()->create([
+        $colaborador = new Colaborador([
             'nome' => 'João Silva',
             'email' => 'joao@email.com',
         ]);
+        $colaborador->save();
 
         $this->assertDatabaseHas('colaboradores', ['email' => 'joao@email.com']);
     }

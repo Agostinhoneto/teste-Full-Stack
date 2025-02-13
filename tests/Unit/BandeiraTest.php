@@ -13,9 +13,9 @@ class BandeiraTest extends TestCase
     /** @test */
     public function pode_criar_uma_bandeira()
     {
-        $bandeira = Bandeira::factory()->create([
-            'nome' => 'Bandeira Exemplo',
-        ]);
+        $bandeira = new Bandeira();
+        $bandeira->nome = 'Bandeira Exemplo';
+        $bandeira->save();
 
         $this->assertDatabaseHas('bandeiras', ['nome' => 'Bandeira Exemplo']);
     }

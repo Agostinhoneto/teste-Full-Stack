@@ -13,9 +13,9 @@ class GrupoEconomicoTest extends TestCase
     /** @test */
     public function pode_criar_um_grupo_economico()
     {
-        $grupo = GrupoEconomico::factory()->create([
-            'nome' => 'Grupo Exemplo',
-        ]);
+        $grupo = new GrupoEconomico();
+        $grupo->nome = 'Grupo Exemplo';
+        $grupo->save();
 
         $this->assertDatabaseHas('grupos_economicos', ['nome' => 'Grupo Exemplo']);
     }

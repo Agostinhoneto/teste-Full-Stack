@@ -13,7 +13,7 @@ class UnidadeTest extends TestCase
     /** @test */
     public function pode_criar_uma_unidade()
     {
-        $unidade = Unidade::factory()->create([
+        $unidade = Unidade::create([
             'nome' => 'Unidade Teste',
         ]);
 

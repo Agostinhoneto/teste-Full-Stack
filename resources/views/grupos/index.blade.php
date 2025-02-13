@@ -19,8 +19,6 @@
 
 <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-200 font-roboto">
     @include('layouts.sidebar')
-    @include('components.flash-message')
-
     <div class="container my-4">
         <div class="card mb-4">
             <div class="card-header bg-primary text-white">Adicionar Novo Grupo Econômico</div>
@@ -41,6 +39,7 @@
                 </form>
             </div>
         </div>
+        @include('components.flash-message')
         <div class="card">
             <div class="card-header bg-secondary text-white">Lista de Grupo Econômico</div>
             <div class="card-body">

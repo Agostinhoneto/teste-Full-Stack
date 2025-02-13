@@ -40,7 +40,6 @@ class UnidadeController extends Controller
             ]);
             return redirect()->route('unidades.index')->with('success', 'Unidade criada com sucesso!');
         } catch (\Exception $e) {
-            // dd($e);
             \Illuminate\Support\Facades\Log::error('Erro ao criar unidade: ' . $e->getMessage());
             return back()->withErrors('Erro ao criar a unidade. Tente novamente mais tarde.');
         }

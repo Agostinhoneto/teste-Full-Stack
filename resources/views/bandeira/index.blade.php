@@ -1,7 +1,20 @@
 @include('layouts.topo')
 @extends('layout')
-@include('mensagem', ['mensagem' => $mensagem])
+@if(session('success'))
+<div class="alert alert-success text-center w-75 mx-auto">
+    {{ session('success') }}
+</div>
+@endif
 
+@if($errors->any())
+<div class="alert alert-danger text-center w-75 mx-auto">
+    <ul class="mb-0">
+        @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 <style>
     .card-header {
         font-weight: bold;
@@ -36,7 +49,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="mb-3">
+                    <div class="col-md-6 mb-3">
                         <label for="grupo_economico" class="form-label fw-bold">
                             <i class="fas fa-building"></i> Grupo Econômico:
                         </label>

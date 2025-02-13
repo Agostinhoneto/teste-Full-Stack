@@ -39,10 +39,10 @@ class ColaboradorController extends Controller
                 'unidade_id' => $request->unidade_id,
                 'usuario_cadastrante_id' => auth()->id(),
             ]);
-            return redirect()->route('colaborador.index')->with('success', 'Colaborador criado com sucesso!');
+            return redirect()->route('colaborador.index')->with('success', '✅ Colaborador criada com sucesso!');
         } catch (\Exception $e) {
-            \Illuminate\Support\Facades\Log::error('Erro ao criar colaborador: ' . $e->getMessage());
-            return back()->withErrors('Erro ao criar colaborador. Tente novamente mais tarde.');
+            \Illuminate\Support\Facades\Log::error('Erro ao criar unidade: ' . $e->getMessage());
+            return back()->withErrors('Erro ao criar a unidade. Tente novamente mais tarde.');
         }
     }
 

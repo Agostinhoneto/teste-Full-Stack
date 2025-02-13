@@ -37,7 +37,7 @@ class GrupoEconomicoController extends Controller
             'usuario_cadastrante_id' => auth()->id(),
             ]);
 
-            return redirect()->route('grupo-economico.index')->with('success', '✅ Unidade criada com sucesso!');
+            return redirect()->route('grupo-economico.index')->with('success', '✅ Grupo criada com sucesso!');
         } catch (\Exception $e) {
             \Illuminate\Support\Facades\Log::error('Erro ao criar unidade: ' . $e->getMessage());
             return back()->withErrors('Erro ao criar a unidade. Tente novamente mais tarde.');
@@ -59,12 +59,10 @@ class GrupoEconomicoController extends Controller
                 'nome' => $request->nome,
                 'usuario_alterante_id' => auth()->id(),
             ]);
-            $request->session()->flash('mensagem', 'Grupo Econômico atualizado com sucesso.');
-
-            return redirect()->route('grupo-economico.index')->with('success', 'Grupo Econômico atualizado com sucesso.');
+            return redirect()->route('grupo-economico.index')->with('success', '✅ Grupo atualizada com sucesso!');
         } catch (\Exception $e) {
-            \Illuminate\Support\Facades\Log::error('Erro ao atualizar grupo econômico: ' . $e->getMessage());
-            return back()->withErrors('Erro ao atualizar o grupo econômico. Tente novamente mais tarde.');
+            \Illuminate\Support\Facades\Log::error('Erro ao criar unidade: ' . $e->getMessage());
+            return back()->withErrors('Erro ao criar a unidade. Tente novamente mais tarde.');
         }
     }
 
@@ -74,12 +72,11 @@ class GrupoEconomicoController extends Controller
         try {
             $grupo = GrupoEconomico::findOrFail($id);
             $grupo->delete();
-            $request->session()->flash('mensagem', 'Grupo Econômico excluido com sucesso.');
-
-            return redirect()->route('grupo-economico.index')->with('success', 'Grupo excluído com sucesso!');
+          
+            return redirect()->route('grupo-economico.index')->with('success', '✅ Grupo Excluído com sucesso!');
         } catch (\Exception $e) {
-            \Illuminate\Support\Facades\Log::error('Erro ao excluir grupo: ' . $e->getMessage());
-            return back()->withErrors('Erro ao excluir a grupo. Tente novamente mais tarde.');
+            \Illuminate\Support\Facades\Log::error('Erro ao criar unidade: ' . $e->getMessage());
+            return back()->withErrors('Erro ao criar a unidade. Tente novamente mais tarde.');
         }
     }
 }

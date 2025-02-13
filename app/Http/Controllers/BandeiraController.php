@@ -35,10 +35,10 @@ class BandeiraController extends Controller
                 'usuario_cadastrante_id' => auth()->id(),
             ]);
 
-            $request->session()->flash('mensagem', 'Bandeira criada com sucesso!');
-            return redirect()->route('bandeira.index')->with('success', 'Bandeira criada com sucesso!');
+            return redirect()->route('bandeira.index')->with('success', '✅ bandeira criada com sucesso!');
         } catch (\Exception $e) {
-            return redirect()->back()->withErrors('Erro ao criar a bandeira: ' . $e->getMessage());
+            \Illuminate\Support\Facades\Log::error('Erro ao criar unidade: ' . $e->getMessage());
+            return back()->withErrors('Erro ao criar a unidade. Tente novamente mais tarde.');
         }
     }
 
@@ -71,10 +71,10 @@ class BandeiraController extends Controller
                 'usuario_alterante_id' => auth()->id(),
             ]);
 
-            $request->session()->flash('mensagem', 'Bandeira atualizada com sucesso!');
-            return redirect()->route('bandeira.index')->with('success', 'Bandeira atualizada com sucesso!');
+            return redirect()->route('bandeira.index')->with('success', '✅ Unidade atualizada com sucesso!');
         } catch (\Exception $e) {
-            return redirect()->back()->withErrors('Erro ao atualizar a bandeira: ' . $e->getMessage());
+            \Illuminate\Support\Facades\Log::error('Erro ao criar unidade: ' . $e->getMessage());
+            return back()->withErrors('Erro ao criar a unidade. Tente novamente mais tarde.');
         }
     }
 

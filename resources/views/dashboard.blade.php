@@ -209,29 +209,28 @@
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3></h3>
+                  <h4>Grupos Econômicos</h4>
                   <p>Não há registradas.</p>
-                 
                 </div>
                 <div class="icon">
                   <i class="ion ion-bag"></i>
                 </div>
-                <a href="#" class="small-box-footer">Ver mais <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route('grupo-economico.index') }}" class="small-box-footer">Ver mais <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
             <div class="col-lg-3 col-6">
               <!-- small box -->
-              <div class="small-box bg-danger">
-                <div class="inner">
-                  <h3></h3>
-                  <p>Não há registradas.</p>
-                  <p></p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
-                </div>
-                <a href="#" class="small-box-footer">Ver mais <i class="fas fa-arrow-circle-right"></i></a>
+              <div class="small-box bg-secondary">
+              <div class="inner">
+                <h4>Bandeiras</h4>
+                <p>Não há registradas.</p>
+                <p></p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="{{ route('bandeira.index') }}" class="small-box-footer">Ver mais <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -239,9 +238,8 @@
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3></h3>
-                  <p>Não há Usuários registradas.</p>
-                  <p>Usuários</p>
+                <h4>Usuários</h4>
+                <p>Não há Usuários registradas.</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-person-add"></i>
@@ -249,21 +247,38 @@
                 <a href="{{route('users.index')}}" class="small-box-footer">Ver mais <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
+
             <!-- ./col -->
             <div class="col-lg-3 col-6">
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3><sup style="font-size: 20px">%</sup></h3>
+                  <h4> Unidades</h4>
                   <p>Não há  registradas.</p>
                   <p></p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="#" class="small-box-footer">Ver mais <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{route('unidades.index')}}" class="small-box-footer">Ver mais <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
+
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-pink">
+              <div class="inner">
+                <h4> Colaboradores</h4>
+                <p>Não há  registradas.</p>
+                <p></p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="{{route('colaborador.index')}}" class="small-box-footer">Ver mais <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+
 
           </div>
           <!-- /.row -->

@@ -8,7 +8,6 @@ use Tests\TestCase;
 
 class UnidadeTest extends TestCase
 {
-    use RefreshDatabase;
 
     /** @test */
     public function pode_criar_uma_unidade()

@@ -8,7 +8,6 @@ use Tests\TestCase;
 
 class GrupoEconomicoTest extends TestCase
 {
-    use RefreshDatabase;
 
     /** @test */
     

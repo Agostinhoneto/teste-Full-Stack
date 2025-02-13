@@ -29,7 +29,7 @@
 
   <style>
     .nav-link.custom-active {
-      background-color: #cc0000;
+      background-color:rgb(71, 69, 69);
       /* Fundo vermelho escuro */
       color: #ffffff;
       /* Texto branco */
@@ -76,14 +76,14 @@
     }
 
     .nav-link.custom-active-blue {
-      background-color: #007BFF;
+      background-color:rgb(33, 64, 97);
       /* Azul padrão */
       color: #ffffff;
       /* Texto branco */
     }
 
     .nav-link.custom-active-blue:hover {
-      background-color: #0056b3;
+      background-color:rgb(74, 117, 163);
       /* Azul mais escuro no hover */
       color: #ffffff;
       /* Texto branco */

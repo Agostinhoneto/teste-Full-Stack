@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class ColaboradorController extends Controller
 {
-  
+
     public function index(Request $request)
     {
         try {
@@ -22,22 +22,22 @@ class ColaboradorController extends Controller
             return back()->withErrors('Erro ao carregar colaboradores. Tente novamente mais tarde.');
         }
     }
- 
+
     public function create()
     {
         return view('colaborador.create');
     }
 
-   
+
     public function store(ColaboradorRequest $request)
     {
         try {
             Colaborador::create([
-            'nome' => $request->nome,
-            'email' => $request->email,
-            'cpf' => $request->cpf,
-            'unidade_id' => $request->unidade_id,
-            'usuario_id' => auth()->id(), 
+                'nome' => $request->nome,
+                'email' => $request->email,
+                'cpf' => $request->cpf,
+                'unidade_id' => $request->unidade_id,
+                'usuario_cadastrante_id' => auth()->id(),
             ]);
             return redirect()->route('colaborador.index')->with('success', 'Colaborador criado com sucesso!');
         } catch (\Exception $e) {
@@ -45,7 +45,7 @@ class ColaboradorController extends Controller
             return back()->withErrors('Erro ao criar colaborador. Tente novamente mais tarde.');
         }
     }
-  
+
     public function show($id)
     {
         try {
@@ -61,7 +61,7 @@ class ColaboradorController extends Controller
     {
         $colaborador = Colaborador::findOrFail($id);
         $unidades = Unidade::all();
-        return view('colaborador.edit', compact('colaborador','unidades'));
+        return view('colaborador.edit', compact('colaborador', 'unidades'));
     }
 
     public function update(Request $request, $id)
@@ -69,10 +69,11 @@ class ColaboradorController extends Controller
         try {
             $colaborador = Colaborador::findOrFail($id);
             $colaborador->update([
-            'nome' => $request->nome,
-            'email' => $request->email,
-            'cpf' => $request->cpf,
-            'unidade_id' => $request->unidade_id,
+                'nome' => $request->nome,
+                'email' => $request->email,
+                'cpf' => $request->cpf,
+                'unidade_id' => $request->unidade_id,
+                'usuario_alterante_id' => auth()->id(),
             ]);
             return redirect()->route('colaborador.index')->with('success', 'Colaborador atualizado com sucesso!');
         } catch (\Exception $e) {
@@ -81,7 +82,7 @@ class ColaboradorController extends Controller
         }
     }
 
-     
+
     public function destroy($id)
     {
         try {

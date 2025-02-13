@@ -9,7 +9,7 @@ class Colaborador extends Model
 {
     use HasFactory;
     protected $table = 'colaboradores';
-    protected $fillable = ['usuario_id','nome', 'email', 'cpf', 'unidade_id'];
+    protected $fillable = ['usuario_cadastrante_id','usuario_alterante_id','nome', 'email', 'cpf', 'unidade_id'];
 
     public function unidades()
     {

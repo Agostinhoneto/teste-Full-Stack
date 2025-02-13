@@ -32,7 +32,7 @@ class BandeiraController extends Controller
             Bandeira::create([
                 'nome' => $request->nome,
                 'grupo_economico_id' => $request->grupo_economico_id,
-                'usuario_id' => auth()->id(),
+                'usuario_cadastrante_id' => auth()->id(),
             ]);
 
             $request->session()->flash('mensagem', 'Bandeira criada com sucesso!');
@@ -68,7 +68,7 @@ class BandeiraController extends Controller
             $bandeira->update([
                 'nome' => $request->nome,
                 'grupo_economico_id' => $request->grupo_economico_id,
-                'usuario_id' => auth()->id(),
+                'usuario_alterante_id' => auth()->id(),
             ]);
 
             $request->session()->flash('mensagem', 'Bandeira atualizada com sucesso!');

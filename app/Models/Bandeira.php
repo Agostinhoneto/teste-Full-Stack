@@ -10,7 +10,7 @@ class Bandeira extends Model
     use HasFactory;
 
 
-    protected $fillable = ['usuario_id','nome','grupo_economico_id'];
+    protected $fillable = ['usuario_cadastrante_id','usuario_alterante_id','nome','grupo_economico_id'];
 
     public function grupo()
     {

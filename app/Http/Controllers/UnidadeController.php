@@ -36,7 +36,7 @@ class UnidadeController extends Controller
                 'razao_social' => $request->razao_social,
                 'cnpj' => $request->cnpj ,
                 'bandeira_id' => $request->bandeira_id,
-                'usuario_id' => auth()->id(), 
+                'usuario_cadastrante_id' => auth()->id(), 
             ]);
             return redirect()->route('unidades.index')->with('success', 'Unidade criada com sucesso!');
         } catch (\Exception $e) {
@@ -79,7 +79,7 @@ class UnidadeController extends Controller
                 'razao_social' => $request->razao_social,
                 'cnpj' => $request->cnpj,
                 'bandeira_id' => $request->bandeira_id,
-                'usuario_id' => auth()->id(),
+                'usuario_alterante_id' => auth()->id(),
             ]);
     
             return redirect()->route('unidades.index')->with('success', 'Unidade atualizada com sucesso!');

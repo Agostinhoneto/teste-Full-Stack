@@ -32,7 +32,7 @@ class GrupoEconomicoController extends Controller
         try {
             GrupoEconomico::create([
             'nome' => $request->nome,
-            'usuario_id' => auth()->id(),
+            'usuario_cadastrante_id' => auth()->id(),
             ]);
 
             $request->session()->flash('mensagem', 'Grupo Econômico criado com sucesso.');
@@ -58,7 +58,7 @@ class GrupoEconomicoController extends Controller
         try {
             $grupo->update([
                 'nome' => $request->nome,
-                'usuario_id' => auth()->id(),
+                'usuario_alterante_id' => auth()->id(),
             ]);
             $request->session()->flash('mensagem', 'Grupo Econômico atualizado com sucesso.');
 

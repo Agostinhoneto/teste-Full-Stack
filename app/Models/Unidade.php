@@ -9,7 +9,7 @@ class Unidade extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome_fantasia', 'razao_social','cnpj','bandeira_id'];
+    protected $fillable = ['usuario_id','nome_fantasia', 'razao_social','cnpj','bandeira_id'];
 
     public function bandeira()
     {

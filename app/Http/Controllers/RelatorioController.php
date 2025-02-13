@@ -64,15 +64,14 @@ class RelatorioController extends Controller
         $periodo1 = $request->input('periodo1');
         $periodo2 = $request->input('periodo2');
 
-        // Lógica para calcular os gastos de cada período
-        $gastosPeriodo1 = Colaborador::whereMonth('data', date('m', strtotime($periodo1)))
+        $colaboradorPeriodo1 = Colaborador::whereMonth('data', date('m', strtotime($periodo1)))
             ->whereYear('data', date('Y', strtotime($periodo1)))
             ->sum('valor');
 
-        $gastosPeriodo2 = Colaborador::whereMonth('data', date('m', strtotime($periodo2)))
+        $colaboradorPeriodo2 = Colaborador::whereMonth('data', date('m', strtotime($periodo2)))
             ->whereYear('data', date('Y', strtotime($periodo2)))
             ->sum('valor');
 
-        return view('relatorios.comparacao', compact('gastosPeriodo1', 'gastosPeriodo2', 'periodo1', 'periodo2'));
+        return view('relatorios.comparacao', compact('colaboradorPeriodo1', 'colaboradorPeriodo2', 'periodo1', 'periodo2'));
     }
 }

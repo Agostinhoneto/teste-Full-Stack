@@ -64,20 +64,5 @@ class  User extends Authenticatable implements JWTSubject
         return $this->roles()->whereHas('permissions', function ($query) use ($permission) {
             $query->where('name', $permission);
         })->exists();
-    }
-
-    public function despesas()
-    {
-        return $this->hasMany(Despesas::class);
-    }
-
-    public function financialGoals()
-    {
-        return $this->hasMany(FinancialGoal::class);
-    }
-
-    public function gastosTotais()
-    {
-        return $this->despesas()->sum('valor');
-    }
+    }   
 }

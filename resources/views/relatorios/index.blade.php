@@ -1,53 +1,55 @@
-    @include('layouts.topo')
-    @include('layouts.sidebar')
-    <div class="container mt-4">
-        <div class="card shadow-sm">
-            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                <h3 class="card-title">Relatórios</h3>
-                <button class="btn btn-sm btn-light" onclick="window.print()">
-                    <i class="fas fa-print"></i> Imprimir
-                </button>
-            </div>
-            <div class="card-body">
-                <!-- Filtros -->
-                <form method="GET" action="{{ url('/reports') }}" class="row g-3 mb-4">
-                    <div class="col-md-6">
-                        <label for="created_at" class="form-label">Data Inicial:</label>
-                        <input type="date" name="created_at" id="created_at" class="form-control" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="data_pagamento" class="form-label">Data Final:</label>
-                        <input type="date" name="data_pagamento" id="data_pagamento" class="form-control" required>
-                    </div>
-                    <div class="col-md-12 text-end">
-                        <button type="submit" class="btn btn-success">
-                            <i class="fas fa-filter"></i> Filtrar
-                        </button>
-                    </div>
-                </form>
-                <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Descrição</th>
-                            <th>email</th>
-                            <th>Data de cadastro</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($colaborador as $c)
-                        <tr>
-                            <td>{{ $c->id }}</td>
-                            <td>{{ $c->nome }}</td>
-                            <td>{{ $c->email }}</td>
-                            <td>{{ \Carbon\Carbon::parse($c->created_at)->format('d/m/Y') }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                <div class="mt-3 text-end">
+@include('layouts.topo')
+@include('layouts.sidebar')
+<div class="container mt-2">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white text-end">
+            <h3 class="card-title">Relatórios</h3>
+        </div>
+        <div class="card-body text-end">
+            <button class="btn btn-sm btn-light" onclick="window.print()">
+                <i class="fas fa-print"></i> Imprimir
+            </button>
+        </div>
+        <div class="card-body">
+            <!-- Filtros -->
+            <form method="GET" action="{{ url('/reports') }}" class="row g-3 mb-4 text-end">
+                @csrf
+                <div class="col-md-6">
+                    <label for="created_at" class="form-label">Data Inicial:</label>
+                    <input type="date" name="created_at" id="created_at" class="form-control" required>
                 </div>
-            </div>
+                <div class="col-md-6">
+                    <label for="data_pagamento" class="form-label">Data Final:</label>
+                    <input type="date" name="data_pagamento" id="data_pagamento" class="form-control" required>
+                </div>
+                <div class="col-md-12 text-end">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-filter"></i> Filtrar
+                    </button>
+                </div>
+            </form>
+
+            <!-- Tabela de Relatórios -->
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Descrição</th>
+                        <th>Email</th>
+                        <th>Data de cadastro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($colaborador as $c)
+                    <tr>
+                        <td>{{ $c->id }}</td>
+                        <td>{{ $c->nome }}</td>
+                        <td>{{ $c->email }}</td>
+                        <td>{{ \Carbon\Carbon::parse($c->created_at)->format('d/m/Y') }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

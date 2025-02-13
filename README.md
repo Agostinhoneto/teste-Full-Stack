@@ -57,8 +57,17 @@ Antes de começar, certifique-se de que seu ambiente atende aos seguintes requis
 
 Após executar os seeders, você pode usar as seguintes credenciais para acessar a conta de administrador:
 
-- **Email:** admin@admin.com (dados estão do Admin seeders )
+- **Email:** admin@admin.com
 - **Senha:** password
 
 *Caso queira criar um novo usuário, há a opção na tela de cadastro do próprio ADMIN.*
 
+## 🧪 Testes
+
+Para rodar os testes, o banco de dados precisa estar limpo. Execute os seguintes comandos antes de rodar os testes:
+
+```bash
+php artisan migrate:fresh
+php artisan db:seed
+php artisan test
+```

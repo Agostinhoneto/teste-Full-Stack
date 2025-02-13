@@ -16,7 +16,7 @@ class ColaboradorTest extends TestCase
             'usuario_cadastrante_id' => 1,
             'usuario_alterante_id' => 1,
             'nome' => 'João Silva',
-            'email' => 'joao@emailteste.com',
+            'email' => 'joao@emailtestexx.com',
             'cpf' => '123.456.789-00',
             'unidade_id' => 1,
         ]);

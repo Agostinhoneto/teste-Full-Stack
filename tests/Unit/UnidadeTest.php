@@ -14,7 +14,7 @@ class UnidadeTest extends TestCase
     {
         $unidade = Unidade::create([
             'usuario_cadastrante_id' => 1,
-            'usuario_alterante_id' => 2,
+            'usuario_alterante_id' => 1,
             'nome_fantasia' => 'Nome Fantasia Teste',
             'razao_social' => 'Razao Social Teste',
             'cnpj' => '00.000.000/0000-00',
@@ -23,7 +23,7 @@ class UnidadeTest extends TestCase
 
         $this->assertDatabaseHas('unidades', [
             'usuario_cadastrante_id' => 1,
-            'usuario_alterante_id' => 2,
+            'usuario_alterante_id' => 1,
             'nome_fantasia' => 'Nome Fantasia Teste',
             'razao_social' => 'Razao Social Teste',
             'cnpj' => '00.000.000/0000-00',

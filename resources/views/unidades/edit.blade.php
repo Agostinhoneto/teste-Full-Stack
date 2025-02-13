@@ -44,7 +44,7 @@
                                         </label>
                                         <select name="bandeira_id" id="bandeira_id" class="form-control select2bs4 border-primary shadow-sm" required>
                                             <option value="" disabled>Selecione uma Bandeira...</option>
-                                            @foreach($bandeira as $b)
+                                            @foreach($bandeiras as $b)
                                             <option value="{{ $b->id }}" @if(old('bandeira_id', $unidade->bandeira_id) == $b->id) selected @endif>
                                                 {{ $b->nome }}
                                             </option>

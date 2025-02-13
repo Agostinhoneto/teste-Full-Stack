@@ -70,7 +70,7 @@
                             <label for="bandeira_id" class="form-label">Bandeira :</label>
                             <select name="bandeira_id" id="bandeira_id" class="form-control @error('bandeira_id') is-invalid @enderror" required>
                                 <option value="" selected disabled>Selecione uma Bandeira...</option>
-                                @foreach($bandeira as $b)
+                                @foreach($bandeiras as $b)
                                 <option value="{{ $b->id }}" {{ old('bandeira_id') == $b->id ? 'selected' : '' }}>
                                     {{ $b->nome }}
                                 </option>

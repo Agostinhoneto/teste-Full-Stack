@@ -2,23 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\ColaboradorRequest;
+use Illuminate\Http\Request;
 use App\Models\Colaborador;
 use App\Models\Unidade;
-use Illuminate\Http\Request;
+use App\Http\Requests\ColaboradorRequest;
+use Illuminate\Support\Facades\Log;
 
 class ColaboradorController extends Controller
 {
+    protected $colaborador;
+    protected $unidade;
+
+    public function __construct(Colaborador $colaborador, Unidade $unidade)
+    {
+        $this->colaborador = $colaborador;
+        $this->unidade = $unidade;
+    }
 
     public function index(Request $request)
     {
         try {
-            $colaboradores = Colaborador::all();
-            $unidades = Unidade::all();
+            $colaboradores = $this->colaborador->all();
+            $unidades = $this->unidade->all();
             return view('colaborador.index', compact('colaboradores', 'unidades'));
         } catch (\Exception $e) {
-            \Illuminate\Support\Facades\Log::error('Erro ao carregar colaboradores: ' . $e->getMessage());
+            Log::error('Erro ao carregar colaboradores: ' . $e->getMessage());
             return back()->withErrors('Erro ao carregar colaboradores. Tente novamente mais tarde.');
         }
     }
@@ -28,46 +36,42 @@ class ColaboradorController extends Controller
         return view('colaborador.create');
     }
 
-
     public function store(ColaboradorRequest $request)
     {
         try {
-            Colaborador::create([
+            $this->colaborador->create([
                 'nome' => $request->nome,
                 'email' => $request->email,
                 'cpf' => $request->cpf,
                 'unidade_id' => $request->unidade_id,
                 'usuario_cadastrante_id' => auth()->id(),
             ]);
-            return redirect()->route('colaborador.index')->with('success', '✅ Colaborador criada com sucesso!');
+            return redirect()->route('colaborador.index')->with('success', '✅ Colaborador criado com sucesso!');
         } catch (\Exception $e) {
-            \Illuminate\Support\Facades\Log::error('Erro ao criar unidade: ' . $e->getMessage());
-            return back()->withErrors('Erro ao criar a unidade. Tente novamente mais tarde.');
+            Log::error('Erro ao criar colaborador: ' . $e->getMessage());
+            return back()->withErrors('Erro ao criar o colaborador. Tente novamente mais tarde.');
         }
     }
 
-    public function show($id)
+    public function show(Colaborador $colaborador)
     {
         try {
-            $colaborador = Colaborador::findOrFail($id);
             return view('colaborador.show', compact('colaborador'));
         } catch (\Exception $e) {
-            \Illuminate\Support\Facades\Log::error('Erro ao exibir colaborador: ' . $e->getMessage());
+            Log::error('Erro ao exibir colaborador: ' . $e->getMessage());
             return back()->withErrors('Erro ao exibir colaborador. Tente novamente mais tarde.');
         }
     }
 
-    public function edit($id)
+    public function edit(Colaborador $colaborador)
     {
-        $colaborador = Colaborador::findOrFail($id);
-        $unidades = Unidade::all();
+        $unidades = $this->unidade->all();
         return view('colaborador.edit', compact('colaborador', 'unidades'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Colaborador $colaborador)
     {
         try {
-            $colaborador = Colaborador::findOrFail($id);
             $colaborador->update([
                 'nome' => $request->nome,
                 'email' => $request->email,
@@ -75,24 +79,22 @@ class ColaboradorController extends Controller
                 'unidade_id' => $request->unidade_id,
                 'usuario_alterante_id' => auth()->id(),
             ]);
-            return redirect()->route('colaborador.index')->with('success', 'Colaborador atualizado com sucesso!');
+            return redirect()->route('colaborador.index')->with('success', '✅ Colaborador atualizado com sucesso!');
         } catch (\Exception $e) {
-            \Illuminate\Support\Facades\Log::error('Erro ao atualizar colaborador: ' . $e->getMessage());
+            dd($e);
+            Log::error('Erro ao atualizar colaborador: ' . $e->getMessage());
             return back()->withErrors('Erro ao atualizar colaborador. Tente novamente mais tarde.');
         }
     }
 
-
-    public function destroy($id)
+    public function destroy(Colaborador $colaborador)
     {
         try {
-            $colaborador = Colaborador::findOrFail($id);
             $colaborador->delete();
-
-            return redirect()->route('colaborador.index')->with('success', 'Colaborador excluída com sucesso!');
+            return redirect()->route('colaborador.index')->with('success', '✅ Colaborador excluído com sucesso!');
         } catch (\Exception $e) {
-            \Illuminate\Support\Facades\Log::error('Erro ao excluir categoria: ' . $e->getMessage());
-            return back()->withErrors('Erro ao excluir a categoria. Tente novamente mais tarde.');
+            Log::error('Erro ao excluir colaborador: ' . $e->getMessage());
+            return back()->withErrors('Erro ao excluir o colaborador. Tente novamente mais tarde.');
         }
     }
 }

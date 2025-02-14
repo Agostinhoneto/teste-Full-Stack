@@ -22,14 +22,12 @@
     @include('layouts.sidebar')
 
     <div class="container my-4">
-        <!-- Formulário de Adicionar Novo Usuário -->
         <div class="card mb-4">
             <div class="card-header" style="background-color: #e0a800; color: white;">Adicionar Novo Usuário</div>
             <div class="card-body">
                 <form action="{{ route('users.store') }}" method="POST">
                     @csrf
                     <div class="row">
-                        <!-- Nome -->
                         <div class="col-md-6 mb-3">
                             <label for="name" class="form-label">Nome</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}">
@@ -37,8 +35,6 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-
-                        <!-- E-mail -->
                         <div class="col-md-6 mb-3">
                             <label for="email" class="form-label">E-mail</label>
                             <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
@@ -49,7 +45,6 @@
                     </div>
 
                     <div class="row">
-                        <!-- Senha -->
                         <div class="col-md-6 mb-3">
                             <label for="password" class="form-label">Senha</label>
                             <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
@@ -58,7 +53,6 @@
                             @enderror
                         </div>
 
-                        <!-- Administrador -->
                         <div class="col-md-6 mb-3">
                             <label for="is_admin">Administrador?</label>
                             <select name="is_admin" id="is_admin" class="form-control">
@@ -68,7 +62,6 @@
                         </div>
                     </div>
 
-                    <!-- Permissões -->
                     <div class="mb-3">
                         <label for="permissions" class="form-label">Permissões:</label>
                         <select name="permissions[]" id="permissions" class="form-select" multiple>
@@ -80,13 +73,10 @@
                         </select>
                     </div>
 
-                    <!-- Botão Salvar -->
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
             </div>
         </div>
-
-        <!-- Lista de Usuários -->
         <div class="card">
             <div class="card-header bg-secondary text-white">Lista de Usuários</div>
             <div class="card-body">
@@ -126,7 +116,6 @@
     </div>
 </div>
 
-<!-- Select2 -->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>

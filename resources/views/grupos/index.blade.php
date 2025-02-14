@@ -37,22 +37,23 @@
         <div class="card mb-4">
             <div class="card-header bg-primary text-white">Adicionar Novo Grupo Econômico</div>
             <div class="card-body">
-                <form action="{{ route('grupo-economico.store') }}" method="POST">
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="name" class="form-label">Nome</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="nome" name="nome" value="{{ old('nome') }}">
-                            @error('name')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                  
-                    <button type="submit" class="btn btn-primary">Salvar</button>
-                </form>
+            <form action="{{ route('grupo-economico.store') }}" method="POST">
+                @csrf
+                <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="name" class="form-label">Nome *</label>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="nome" name="nome" value="{{ old('nome') }}" required>
+                    @error('name')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+                </div>
+                <div class="text-danger mb-3">* Campos obrigatórios</div>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
             </div>
         </div>
+
         @include('components.flash-message')
         <div class="card">
             <div class="card-header bg-secondary text-white">Lista de Grupo Econômico</div>

@@ -43,23 +43,23 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control @error('nome') is-invalid @enderror" id="nome" name="nome" value="{{ old('nome') }}">
+                            <label for="nome" class="form-label">Nome *</label>
+                            <input type="text" class="form-control @error('nome') is-invalid @enderror" id="nome" name="nome" value="{{ old('nome') }}" required>
                             @error('nome')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
+                            <label for="email" class="form-label">Email *</label>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required>
                             @error('email')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="cpf" class="form-label">CPF</label>
-                            <input type="text" class="form-control @error('cpf') is-invalid @enderror" id="cpf" name="cpf" value="{{ old('cpf') }}" oninput="mascaraCPF(this)" maxlength="14">
+                            <label for="cpf" class="form-label">CPF *</label>
+                            <input type="text" class="form-control @error('cpf') is-invalid @enderror" id="cpf" name="cpf" value="{{ old('cpf') }}" oninput="mascaraCPF(this)" maxlength="14" required>
                             @error('cpf')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -88,6 +88,7 @@
                             </select>
                         </div>
                     </div>
+                    <div class="text-danger mb-3">* Campos obrigatórios</div>
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
             </div>

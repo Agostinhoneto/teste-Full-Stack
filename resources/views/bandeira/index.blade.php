@@ -42,8 +42,8 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="name" class="form-label">Nome</label>
-                            <input type="text" class="form-control @error('nome') is-invalid @enderror" id="name" name="nome" value="{{ old('nome') }}">
+                            <label for="name" class="form-label">Nome *</label>
+                            <input type="text" class="form-control @error('nome') is-invalid @enderror" id="name" name="nome" value="{{ old('nome') }}" required>
                             @error('nome')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -62,8 +62,7 @@
                             @endforeach
                         </select>
                     </div>
-
-
+                    <div class="text-danger mb-3">* Campos obrigatórios</div>
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
             </div>

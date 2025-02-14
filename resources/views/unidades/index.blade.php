@@ -45,14 +45,14 @@
                     <div class="row">
                         <div class="col-md-4 mb-3">
                             <label for="nome_fantasia" class="form-label">Nome Fantasia</label>
-                            <input type="text" class="form-control @error('nome_fantasia') is-invalid @enderror" id="nome_fantasia" name="nome_fantasia" value="{{ old('nome_fantasia') }}">
+                            <input type="text" class="form-control @error('nome_fantasia') is-invalid @enderror" id="nome_fantasia" name="nome_fantasia" value="{{ old('nome_fantasia') }}" required>
                             @error('nome_fantasia')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="razao_social" class="form-label">Razão Social</label>
-                            <input type="text" class="form-control @error('razao_social') is-invalid @enderror" id="razao_social" name="razao_social" value="{{ old('razao_social') }}">
+                            <input type="text" class="form-control @error('razao_social') is-invalid @enderror" id="razao_social" name="razao_social" value="{{ old('razao_social') }}" required>
                             @error('razao_social')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -60,7 +60,7 @@
 
                         <div class="col-md-4 mb-3">
                             <label for="cnpj" class="form-label">CNPJ</label>
-                            <input type="text" class="form-control @error('cnpj') is-invalid @enderror" id="cnpj" name="cnpj" value="{{ old('cnpj') }}" oninput="mascaraCNPJ(this)" maxlength="18">
+                            <input type="text" class="form-control @error('cnpj') is-invalid @enderror" id="cnpj" name="cnpj" value="{{ old('cnpj') }}" oninput="mascaraCNPJ(this)" maxlength="18" required>
                             @error('cnpj')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -92,6 +92,7 @@
                             input.value = value;
                         }
                     </script>
+                    <div class="text-danger mb-3">* Campos obrigatórios</div>
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
             </div>

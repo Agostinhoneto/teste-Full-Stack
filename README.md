@@ -71,3 +71,19 @@ php artisan migrate:fresh
 php artisan db:seed
 php artisan test
 ```
+
+## Filas
+
+Para enviar as filas para processos de relatórios, utilize o seguinte comando:
+
+```bash
+php artisan queue:work
+```
+Este comando iniciará o processamento das filas em segundo plano, garantindo que os relatórios sejam gerados conforme necessário.
+
+Ou se preferir via tinker:
+```bash
+php artisan tinker
+```
+use App\Jobs\ExportarRelatorio;
+ExportarRelatorio::dispatch([1, 2, 3]);

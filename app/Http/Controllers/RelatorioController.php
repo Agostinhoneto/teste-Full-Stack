@@ -77,12 +77,12 @@ class RelatorioController extends Controller
     }
 
 
-    public function exportar(Request $request)
+    public function exportReport(Request $request)
     {
-        $relatorioId = $request->input('relatorio_id');
+        $employeeIds = $request->input('employee_ids');
 
-        ExportarRelatorio::dispatch($relatorioId);
+        ExportarRelatorio::dispatch($employeeIds);
 
-        return response()->json(['message' => 'Exportação iniciada!']);
+        return response()->json(['message' => 'Exportação de relatório iniciada.']);
     }
 }

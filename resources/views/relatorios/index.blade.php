@@ -38,7 +38,7 @@
                         <thead class="table-dark">
                             <tr>
                                 <th>Id</th>
-                                <th>Descrição</th>
+                                <th>Nome do Colaborador</th>
                                 <th>Email</th>
                                 <th>Data de Cadastro</th>
                             </tr>

@@ -6,7 +6,7 @@ Antes de começar, certifique-se de que seu ambiente atende aos seguintes requis
 
 - PHP 8.1 ou superior
 - Composer (gerenciador de dependências do PHP)
-- MySQL ou outro banco de dados compatível
+- MySQL. 
 - Node.js (para gerenciamento de dependências front-end)
 - Laravel 10.x
 - Extensão BCMath habilitada

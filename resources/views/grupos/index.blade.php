@@ -71,6 +71,9 @@
                             <td>{{ $g->id }}</td>
                             <td>{{ $g->nome }}</td>
                             <td>
+                                <a href="{{ route('grupo-economico.show', $g->id) }}" class="btn btn-info btn-sm">
+                                    <i class="fas fa-eye"></i> Ver
+                                </a>
                                 <a href="{{ route('grupo-economico.edit', $g->id) }}" class="btn btn-warning btn-sm">
                                     <i class="fas fa-edit"></i> Editar
                                 </a>

@@ -119,6 +119,9 @@
                             <td>{{ $und->razao_social }}</td>
                             <td>{{ $und->bandeira->nome }}</td>   
                             <td>
+                                <a href="{{ route('unidades.show', $und->id) }}" class="btn btn-info btn-sm">
+                                    <i class="fas fa-eye"></i> Ver
+                                </a>
                                 <a href="{{ route('unidades.edit', $und->id) }}" class="btn btn-warning btn-sm">
                                     <i class="fas fa-edit"></i> Editar
                                 </a>

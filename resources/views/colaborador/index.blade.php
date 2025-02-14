@@ -115,6 +115,9 @@
                             <td>{{ $col->email }}</td>
                             <td>{{ $col->unidades->nome_fantasia }}</td>
                             <td>
+                                <a href="{{ route('colaborador.show', $col->id) }}" class="btn btn-info btn-sm">
+                                    <i class="fas fa-eye"></i> Ver
+                                </a>
                                 <a href="{{ route('colaborador.edit', $col->id) }}" class="btn btn-warning btn-sm">
                                     <i class="fas fa-edit"></i> Editar
                                 </a>

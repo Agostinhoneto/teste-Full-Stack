@@ -38,7 +38,7 @@
 
     <div class="container my-4">
         <div class="card mb-4">
-            <div class="card-header bg-primary text-white">Adicionar Nova Unidades</div>
+            <div class="card-header bg-success text-white">Adicionar Nova Unidades</div>
             <div class="card-body">
                 <form action="{{ route('unidades.store') }}" method="POST">
                     @csrf

@@ -37,7 +37,7 @@
 
     <div class="container my-4">
         <div class="card mb-4">
-            <div class="card-header bg-primary text-white">Adicionar Novo Colaborador</div>
+            <div class="card-header" style="background-color: rgb(238, 122, 142); color: white;">Adicionar Novo Colaborador</div>
             <div class="card-body">
                 <form action="{{ route('colaborador.store') }}" method="POST">
                     @csrf

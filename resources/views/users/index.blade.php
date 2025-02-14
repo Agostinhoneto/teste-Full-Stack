@@ -24,7 +24,7 @@
     <div class="container my-4">
         <!-- Formulário de Adicionar Novo Usuário -->
         <div class="card mb-4">
-            <div class="card-header bg-primary text-white">Adicionar Novo Usuário</div>
+            <div class="card-header" style="background-color: #e0a800; color: white;">Adicionar Novo Usuário</div>
             <div class="card-body">
                 <form action="{{ route('users.store') }}" method="POST">
                     @csrf

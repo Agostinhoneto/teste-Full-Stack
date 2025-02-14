@@ -36,7 +36,7 @@
     @include('layouts.sidebar')
     <div class="container my-4">
         <div class="card mb-4">
-            <div class="card-header bg-primary text-white">Adicionar Nova Bandeira</div>
+            <div class="card-header bg-secondary text-white">Adicionar Nova Bandeira</div>
             <div class="card-body">
                 <form action="{{ route('bandeira.store') }}" method="POST">
                     @csrf

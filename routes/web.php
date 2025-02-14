@@ -8,6 +8,11 @@ use App\Http\Controllers\GrupoEconomicoController;
 use App\Http\Controllers\RelatorioController;
 use App\Http\Controllers\UnidadeController;
 use App\Http\Controllers\UserController;
+use App\Models\Bandeira;
+use App\Models\Colaborador;
+use App\Models\GrupoEconomico;
+use App\Models\Unidade;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,8 +33,14 @@ Route::get('/', function () {
 Route::get('/logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
 
 
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $gruposEconomicos = GrupoEconomico::count('id');
+    $bandeiras = Bandeira::count('id');
+    $unidades = Unidade::count('id');
+    $colaborador = Colaborador::count('id');
+    $totalUsuarios = User::count('id');
+    return view('dashboard', compact('gruposEconomicos', 'bandeiras', 'unidades', 'colaborador','totalUsuarios'));
 })->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth', 'is_admin'])->group(function () {

@@ -52,7 +52,7 @@ Route::middleware(['auth'])->group(function () {
         // 🏢 Grupo Econômico
         Route::prefix('grupo-economico')->name('grupo-economico.')->group(function () {
             Route::get('/', [GrupoEconomicoController::class, 'index'])->name('index');
-            Route::get('/show', [GrupoEconomicoController::class, 'show'])->name('show');
+            Route::get('/show/{grupoEconomico}', [GrupoEconomicoController::class, 'show'])->name('show');
             Route::get('/create', [GrupoEconomicoController::class, 'create'])->name('create');
             Route::post('/', [GrupoEconomicoController::class, 'store'])->name('store');
             Route::get('/{grupoEconomico}/edit', [GrupoEconomicoController::class, 'edit'])->name('edit');
@@ -74,7 +74,7 @@ Route::middleware(['auth'])->group(function () {
         // 🏬 Unidades
         Route::prefix('unidades')->name('unidades.')->group(function () {
             Route::get('/', [UnidadeController::class, 'index'])->name('index');
-            Route::get('/show', [UnidadeController::class, 'show'])->name('show');
+            Route::get('/show/{unidade}', [UnidadeController::class, 'show'])->name('show');
             Route::get('/create', [UnidadeController::class, 'create'])->name('create');
             Route::post('/', [UnidadeController::class, 'store'])->name('store');
             Route::get('/{unidade}/edit', [UnidadeController::class, 'edit'])->name('edit');
@@ -85,7 +85,7 @@ Route::middleware(['auth'])->group(function () {
         // 👨‍💼 Colaborador
         Route::prefix('colaborador')->name('colaborador.')->group(function () {
             Route::get('/', [ColaboradorController::class, 'index'])->name('index');
-            Route::get('/show', [ColaboradorController::class, 'show'])->name('show');
+            Route::get('/show/{colaborador}', [ColaboradorController::class, 'show'])->name('show');
             Route::get('/create', [ColaboradorController::class, 'create'])->name('create');
             Route::post('/', [ColaboradorController::class, 'store'])->name('store');
             Route::get('/{colaborador}/edit', [ColaboradorController::class, 'edit'])->name('edit');

@@ -57,10 +57,13 @@ class UnidadeController extends Controller
         }
     }
 
-    public function show(Unidade $unidade)
+    public function show(Unidade $unidade,Request $request)
     {
         try {
-            return view('unidades.show', compact('unidade'));
+            $bandeiras = $this->bandeira->all();
+            $mensagem = $request->session()->get('mensagem');
+
+            return view('unidades.show', compact('unidade', 'bandeiras', 'mensagem'));
         } catch (\Exception $e) {
             Log::error('Erro ao carregar unidade: ' . $e->getMessage());
             return back()->withErrors('Erro ao carregar a unidade. Tente novamente mais tarde.');

@@ -29,6 +29,16 @@ class GrupoEconomicoController extends Controller
         }
     }
 
+    public function show(GrupoEconomico $grupoEconomico)
+    {
+        try {
+            return view('grupos.show', compact('grupoEconomico'));
+        } catch (\Exception $e) {
+            Log::error('Erro ao carregar grupo econômico: ' . $e->getMessage());
+            return back()->withErrors('Erro ao carregar o grupo econômico. Tente novamente mais tarde.');
+        }
+    }
+    
     public function create()
     {
         return view('grupos.create');
